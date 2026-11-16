@@ -20,7 +20,7 @@ Atributos:
 * `cover_image`
 * `description` 
 * `release_date`
-* `format`
+* `format` <!-- lp,vinilo,digital,cd -->
 
 **Entidad secundaria: `Album Review`**
 
@@ -28,7 +28,7 @@ Atributos:
 * `nickname`
 * `review_date`
 * `opinion`
-* `rating`
+* `rating` <!-- 1 a 5 estrellas -->
 
 ### Imágenes
 
@@ -36,4 +36,4 @@ Cada disco (`Album`) tendrá asociada una única imagen de portada (`cover_image
 
 ### Buscador, filtrado o categorización
 
-Se podrán filtrar los albumes por título (`album_title`). Además, los discos estarán asociados a un artista (`artist`), que permitirá organizarlos o consultarlos por artista.
+Se podrán filtrar los albumes por título (`album_title`). Además, los discos estarán asociados a un formato (`format`), que permitirá organizarlos o consultarlos por artista.
