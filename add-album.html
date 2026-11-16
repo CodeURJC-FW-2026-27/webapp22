@@ -56,7 +56,69 @@
                 </div>
             </div>
         </header>
-        <main>
+        <main class="page-background">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h1 class="page-title">Add a new album</h1>
+                        <p class="page-subtitle">Fill out the form to add a new album</p>
+                    </div>
+                </div>
+                <div class="form-panel">
+                    <!-- Album fields: label for matches input id; name identifies the submitted value. -->
+                    <form class="form-surface" id="album-form">
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label class="form-label" for="album-title">Album</label>
+                                <input class="form-control" id="album-title" name="album_title" placeholder="Album title" required type="text">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="record-price">Price</label>
+                                <input class="form-control" id="record-price" min="0" name="record_price" placeholder="Album price" required step="0.01" type="number">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="artist">Artist</label>
+                                <input class="form-control" id="artist" name="artist" placeholder="Artist name" required type="text">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label class="form-label" for="cover-image">Album cover</label>
+                                <input accept="image/*" class="form-control" id="cover-image" name="cover_image" required type="file">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="release-date">Release date</label>
+                                <input class="form-control" id="release-date" name="release_date" required type="date">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea class="form-control" id="description" name="description" placeholder="Album description" required rows="4"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="format">Format</label>
+                                <!-- Keep these choices consistent with the shared header. -->
+                                <select class="form-select" id="format" name="format" required>
+                                    <option value="lp">LP</option>
+                                    <option selected value="vinyl">Vinyl</option>
+                                    <option value="digital">Digital</option>
+                                    <option value="cd">CD</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-between gap-2 flex-wrap">
+                                <a class="button" href="index.html">Cancel</a>
+                                <!-- Static in phase 1; form submission belongs to phase 2. -->
+                                <button class="button" type="button">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </main>
         <!-- Shared footer: opening hours and return-to-top link. -->
         <footer class="site-footer">

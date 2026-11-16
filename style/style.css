@@ -372,3 +372,25 @@
     display: flex;
     gap: 0.5rem;
 }
+
+
+/* 4. Album form */
+/* The outer panel draws the gradient border; the form is its inner surface. */
+.form-panel {
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #4ECDC4 0%, #FF6B6B 100%);
+    padding: 5px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.form-surface {
+    border-radius: 15px;
+    background: linear-gradient(135deg, #e9ecf0 0%, #b5c1d5 100%);
+    padding: 30px;
+    width: 100%;
+}
+
