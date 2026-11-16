@@ -302,3 +302,44 @@
     padding-left: 2rem;
     padding-right: 2rem;
 }
+
+/* Album detail */
+.detail-layout {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.album-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.album-details {
+    margin-bottom: 4em;
+}
+
+.detail-cover img {
+    width: 100%;
+    max-width: 40em;
+    height: auto;
+    display: block;
+    margin-top: 1em;
+}
+
+.detail-cover {
+    background: #fdfdfd;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.release-date {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
