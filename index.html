@@ -1,97 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Vinyl Devs</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-        <link href="style/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <!-- Shared header: keep navigation and format options identical on all three pages. -->
-        <header class="site-header" id="top">
-            <div class="container-fluid">
-                <div class="row align-items-center header-row">
-                    <div class="col-12 col-md-6 header-column mb-3">
-                        <div class="brand">
-                            <div aria-hidden="true" class="record-logo">
-                                <div class="record-middle">
-                                    <div class="record-label"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="brand-name">VINYL DEVS</p>
-                                <p class="brand-tagline">Your favorite record shop</p>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Vinyl Devs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Shared header: keep navigation and format options identical on all three pages. -->
+    <header class="site-header" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center header-row">
+                <div class="col-12 col-md-6 header-column mb-3">
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 header-column">
-                        <nav aria-label="Main navigation" class="site-nav">
-                            <ul>
-                                <li>
-                                    <a class="nav-link" href="index.html">Home</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="index.html#albums">Albums</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="add-album.html">Add album</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="#opening-hours">Opening hours</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <div class="container header-tools">
-                <div aria-label="Album formats" class="format-options" role="group">
-                    <span>Formats</span>
-                    <button class="nav-link" type="button">LP</button>
-                    <button class="nav-link" type="button">Vinyl</button>
-                    <button class="nav-link" type="button">Digital</button>
-                    <button class="nav-link" type="button">CD</button>
-                </div>
-            </div>
-        </header>
-        <main id="albums">
-        </main>
-        <!-- Shared footer: opening hours and return-to-top link. -->
-        <footer class="site-footer">
-            <div class="container-fluid">
-                <div class="row align-items-center py-4 justify-content-between">
-                    <div class="col-auto mb-3 mb-md-0">
-                        <div class="brand">
-                            <div aria-hidden="true" class="record-logo">
-                                <div class="record-middle">
-                                    <div class="record-label"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="brand-name h4 mb-1">VINYL DEVS</p>
-                                <p class="brand-tagline small mb-0">Your favorite record shop</p>
-                            </div>
+                        <div>
+                            <p class="brand-name">VINYL DEVS</p>
+                            <p class="brand-tagline">Your favorite record shop</p>
                         </div>
                     </div>
-                    <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
-                        <h3 class="schedule-title h5 mb-3" id="opening-hours">Opening Hours</h3>
-                        <div class="schedule-days">
-                            <p class="mb-1">Monday - Friday: 10:00 - 20:00</p>
-                            <p class="mb-1">Saturday: 09:00 - 22:00</p>
-                            <p class="mb-0">Sunday: 11:00 - 18:00</p>
-                        </div>
-                    </div>
-                    <div class="col-auto text-center">
-                        <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
-                            <i aria-hidden="true" class="fas fa-chevron-up me-2">
-                            </i>
-                            Back to Top
-                        </a>
-                    </div>
+                </div>
+                <div class="col-12 col-md-6 header-column">
+                    <nav aria-label="Main navigation" class="site-nav">
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="index.html#albums">Albums</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="add-album.html">Add album</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#opening-hours">Opening hours</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-        </footer>
-    </body>
+        </div>
+        <div class="container header-tools">
+            <div aria-label="Album formats" class="format-options" role="group">
+                <span>Formats</span>
+                <button class="nav-link" type="button">LP</button>
+                <button class="nav-link" type="button">Vinyl</button>
+                <button class="nav-link" type="button">Digital</button>
+                <button class="nav-link" type="button">CD</button>
+            </div>
+        </div>
+    </header>
+    <main class="page-background" id="albums">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h1 class="page-title">Our vinyl records</h1>
+                    <p class="page-subtitle">Discover our featured albums</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end mb-4">
+                <a class="button" href="add-album.html">Add album</a>
+            </div>
+            <!-- Catalogue: copy one complete Bootstrap column to add an album. -->
+            <div class="row" id="album-list">
+                <!-- One album: cover, detail link, title, artist and price. -->
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Av. Rafaela Ibarra album cover" src="images/Av._Rafaela_Ibarra.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Av. Rafaela Ibarra" class="button" href="detail.html">See
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Av. Rafaela Ibarra</a>
+                            </h3>
+                            <div class="album-meta">Ill Pekeño</div>
+                            <div class="price">€45.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="BBO album cover" src="images/BBO.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: BBO" class="button" href="detail.html">See Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">BBO</a>
+                            </h3>
+                            <div class="album-meta">Hoke</div>
+                            <div class="price">€89.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Efugio album cover" src="images/Efugio.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Efugio" class="button" href="detail.html">See Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Efugio</a>
+                            </h3>
+                            <div class="album-meta">Jaloner</div>
+                            <div class="price">€32.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="La Madrugá album cover" src="images/La_Madrugá.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: La Madrugá" class="button" href="detail.html">See
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">La Madrugá</a>
+                            </h3>
+                            <div class="album-meta">Delaossa</div>
+                            <div class="price">€67.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Maracucho Bueno Muere Chiquito album cover"
+                                src="images/Maracucho_Bueno_Muere_Chiquito.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Maracucho Bueno Muere Chiquito" class="button"
+                                    href="detail.html">See Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Maracucho Bueno Muere Chiquito</a>
+                            </h3>
+                            <div class="album-meta">Cruz Cafuné</div>
+                            <div class="price">€55.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Meds album cover" src="images/Meds.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Meds" class="button" href="detail.html">See Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Meds</a>
+                            </h3>
+                            <div class="album-meta">Placebo</div>
+                            <div class="price">€12.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Moonlight922 album cover" src="images/Moonlight922.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Moonlight922" class="button" href="detail.html">See
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Moonlight922</a>
+                            </h3>
+                            <div class="album-meta">Cruz Cafuné</div>
+                            <div class="price">€78.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="P.E.K.E. album cover" src="images/P.E.K.E..png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: P.E.K.E." class="button" href="detail.html">See Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">P.E.K.E.</a>
+                            </h3>
+                            <div class="album-meta">Ill Pekeño</div>
+                            <div class="price">€69.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Pangea, la grieta album cover" src="images/Pangea_la_grieta.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Pangea, la grieta" class="button" href="detail.html">See
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Pangea, la grieta</a>
+                            </h3>
+                            <div class="album-meta">Jaloner</div>
+                            <div class="price">€35.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Playa Virginia album cover" src="images/Playa_Virginia.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Playa Virginia" class="button" href="detail.html">See
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Playa Virginia</a>
+                            </h3>
+                            <div class="album-meta">Delaossa</div>
+                            <div class="price">€52.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Sleeping with Ghosts album cover" src="images/Sleeping_with_ghosts.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: Sleeping with Ghosts" class="button" href="detail.html">See
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">Sleeping with Ghosts</a>
+                            </h3>
+                            <div class="album-meta">Placebo</div>
+                            <div class="price">€95.99</div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <article class="album-card">
+                        <div class="cover-frame">
+                            <img alt="Tres Creus album cover" src="images/TRES_CREUS.png">
+                            <div class="cover-overlay">
+                                <a aria-label="See details: TRES CREUS" class="button" href="detail.html">See
+                                    Details</a>
+                            </div>
+                        </div>
+                        <div class="album-info">
+                            <h3 class="album-title">
+                                <a href="detail.html">TRES CREUS</a>
+                            </h3>
+                            <div class="album-meta">Hoke</div>
+                            <div class="price">€42.99</div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Shared footer: opening hours and return-to-top link. -->
+    <footer class="site-footer">
+        <div class="container-fluid">
+            <div class="row align-items-center py-4 justify-content-between">
+                <div class="col-auto mb-3 mb-md-0">
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="brand-name h4 mb-1">VINYL DEVS</p>
+                            <p class="brand-tagline small mb-0">Your favorite record shop</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
+                    <h3 class="schedule-title h5 mb-3" id="opening-hours">Opening Hours</h3>
+                    <div class="schedule-days">
+                        <p class="mb-1">Monday - Friday: 10:00 - 20:00</p>
+                        <p class="mb-1">Saturday: 09:00 - 22:00</p>
+                        <p class="mb-0">Sunday: 11:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="col-auto text-center">
+                    <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
+                        <i aria-hidden="true" class="fas fa-chevron-up me-2">
+                        </i>
+                        Back to Top
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>
