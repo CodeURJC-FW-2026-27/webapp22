@@ -1,120 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <title>Av. Rafaela Ibarra | Vinyl Devs</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-        <link href="style/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <!-- Shared header: keep navigation and format options identical on all three pages. -->
-        <header class="site-header" id="top">
-            <div class="container-fluid">
-                <div class="row align-items-center header-row">
-                    <div class="col-12 col-md-6 header-column mb-3">
-                        <div class="brand">
-                            <div aria-hidden="true" class="record-logo">
-                                <div class="record-middle">
-                                    <div class="record-label"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="brand-name">VINYL DEVS</p>
-                                <p class="brand-tagline">Your favorite record shop</p>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Av. Rafaela Ibarra | Vinyl Devs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Shared header: keep navigation and format options identical on all three pages. -->
+    <header class="site-header" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center header-row">
+                <div class="col-12 col-md-6 header-column mb-3">
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 header-column">
-                        <nav aria-label="Main navigation" class="site-nav">
-                            <ul>
-                                <li>
-                                    <a class="nav-link" href="index.html">Home</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="index.html#albums">Albums</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="add-album.html">Add album</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="#opening-hours">Opening hours</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <div class="container header-tools">
-                <div aria-label="Album formats" class="format-options" role="group">
-                    <span>Formats</span>
-                    <button class="nav-link" type="button">LP</button>
-                    <button class="nav-link" type="button">Vinyl</button>
-                    <button class="nav-link" type="button">Digital</button>
-                    <button class="nav-link" type="button">CD</button>
-                </div>
-            </div>
-        </header>
-        <main id="album-detail">
-            <div class="container-fluid detail-layout">
-                <div class="row">
-                    <div class="col-lg-6 col-12 detail-cover">
-                        <img alt="Av. Rafaela Ibarra album cover" src="images/Av._Rafaela_Ibarra.png">
-                    </div>
-                    <div class="col-lg-6 col-12 m-auto">
-                        <div class="album-details text-center">
-                            <h1 class="album-title">Av. Rafaela Ibarra</h1>
-                            <div class="price">45.99€</div>
-                            <div lang="es">Edición en vinilo de Av. Rafaela Ibarra, un álbum de Ill Pekeño.</div>
-                            <div class="album-meta">Artist: Ill Pekeño</div>
-                            <div class="album-meta">Format: Vinyl record</div>
-                            <p class="release-date">Release date: Not provided</p>
-                            <!-- Phase 1 actions are static. Navigation uses links. -->
-                            <div class="album-actions">
-                                <button class="button" type="button">Delete</button>
-                                <button class="button" type="button">Edit</button>
-                                <a class="button" href="index.html">Return to main page</a>
-                            </div>
+                        <div>
+                            <p class="brand-name">VINYL DEVS</p>
+                            <p class="brand-tagline">Your favorite record shop</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-        <!-- Shared footer: opening hours and return-to-top link. -->
-        <footer class="site-footer">
-            <div class="container-fluid">
-                <div class="row align-items-center py-4 justify-content-between">
-                    <div class="col-auto mb-3 mb-md-0">
-                        <div class="brand">
-                            <div aria-hidden="true" class="record-logo">
-                                <div class="record-middle">
-                                    <div class="record-label"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <p class="brand-name h4 mb-1">VINYL DEVS</p>
-                                <p class="brand-tagline small mb-0">Your favorite record shop</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
-                        <h3 class="schedule-title h5 mb-3" id="opening-hours">Opening Hours</h3>
-                        <div class="schedule-days">
-                            <p class="mb-1">Monday - Friday: 10:00 - 20:00</p>
-                            <p class="mb-1">Saturday: 09:00 - 22:00</p>
-                            <p class="mb-0">Sunday: 11:00 - 18:00</p>
-                        </div>
-                    </div>
-                    <div class="col-auto text-center">
-                        <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
-                            <i aria-hidden="true" class="fas fa-chevron-up me-2">
-                            </i>
-                            Back to Top
-                        </a>
-                    </div>
+                <div class="col-12 col-md-6 header-column">
+                    <nav aria-label="Main navigation" class="site-nav">
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="index.html#albums">Albums</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="add-album.html">Add album</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#opening-hours">Opening hours</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-        </footer>
-    </body>
+        </div>
+        <div class="container header-tools">
+            <div aria-label="Album formats" class="format-options" role="group">
+                <span>Formats</span>
+                <button class="nav-link" type="button">LP</button>
+                <button class="nav-link" type="button">Vinyl</button>
+                <button class="nav-link" type="button">Digital</button>
+                <button class="nav-link" type="button">CD</button>
+            </div>
+        </div>
+    </header>
+    <main id="album-detail">
+        <div class="container-fluid detail-layout">
+            <div class="row">
+                <div class="col-lg-6 col-12 detail-cover">
+                    <img alt="Av. Rafaela Ibarra album cover" src="images/Av._Rafaela_Ibarra.png">
+                </div>
+                <div class="col-lg-6 col-12 m-auto">
+                    <div class="album-details text-center">
+                        <h1 class="album-title">Av. Rafaela Ibarra</h1>
+                        <div class="price">45.99€</div>
+                        <div lang="es">Edición en vinilo de Av. Rafaela Ibarra, un álbum de Ill Pekeño.</div>
+                        <div class="album-meta">Artist: Ill Pekeño</div>
+                        <div class="album-meta">Format: Vinyl record</div>
+                        <p class="release-date">Release date: Not provided</p>
+                        <!-- Phase 1 actions are static. Navigation uses links. -->
+                        <div class="album-actions">
+                            <button class="button" type="button">Delete</button>
+                            <button class="button" type="button">Edit</button>
+                            <a class="button" href="index.html">Return to main page</a>
+                        </div>
+                    </div>
+                    <!-- Review fields: label for matches input id; name identifies the submitted value. -->
+                    <form id="review-form">
+                        <h2 class="h5">Leave a review!</h2>
+                        <div class="mb-3">
+                            <label class="form-label" for="nickname">Nickname</label>
+                            <input class="form-control" id="nickname" name="nickname" placeholder="Your nickname"
+                                required type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="review-date">Date</label>
+                            <input class="form-control" id="review-date" name="review_date" required type="date">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="opinion">Opinion</label>
+                            <textarea class="form-control" id="opinion" name="opinion" placeholder="Write a review"
+                                required rows="4"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="rating">Rating</label>
+                            <select class="form-select" id="rating" name="rating" required>
+                                <option disabled selected value="">Choose a rating</option>
+                                <option value="1">1★</option>
+                                <option value="2">2★</option>
+                                <option value="3">3★</option>
+                                <option value="4">4★</option>
+                                <option value="5">5★</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button class="button" type="button">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <!-- Reviews: repeat one Bootstrap column per review. -->
+            <div class="row">
+                <div class="col-lg-6 col-12" lang="es">
+                    <article class="review-item">
+                        <table>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Nombre:</strong>
+                                </th>
+                                <td>Lucía Martínez</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Fecha:</strong>
+                                </th>
+                                <td>14/02/2023</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Opinión:</strong>
+                                </th>
+                                <td>
+                                    El álbum me ha encantado y la portada es espectacular. Me alegro mucho de tener este
+                                    vinilo
+                                    en mi colección.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Valoración:</strong>
+                                </th>
+                                <td>5★</td>
+                            </tr>
+                        </table>
+                        <div class="review-actions">
+                            <button class="button" type="button">Eliminar</button>
+                            <button class="button" type="button">Editar</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-6 col-12" lang="es">
+                    <article class="review-item">
+                        <table>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Nombre:</strong>
+                                </th>
+                                <td>Javier López</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Fecha:</strong>
+                                </th>
+                                <td>12/01/2022</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Opinión:</strong>
+                                </th>
+                                <td>
+                                    Me gusta mucho el sonido del álbum y el diseño de la portada. Una buena
+                                    incorporación a mi
+                                    colección.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Valoración:</strong>
+                                </th>
+                                <td>3★</td>
+                            </tr>
+                        </table>
+                        <div class="review-actions">
+                            <button class="button" type="button">Eliminar</button>
+                            <button class="button" type="button">Editar</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-12" lang="es">
+                    <article class="review-item">
+                        <table>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Nombre:</strong>
+                                </th>
+                                <td>Marta Sánchez</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Fecha:</strong>
+                                </th>
+                                <td>13/04/2021</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Opinión:</strong>
+                                </th>
+                                <td>
+                                    La portada destaca un montón y el vinilo queda genial expuesto. Además, se escucha
+                                    de
+                                    maravilla.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Valoración:</strong>
+                                </th>
+                                <td>4★</td>
+                            </tr>
+                        </table>
+                        <div class="review-actions">
+                            <button class="button" type="button">Eliminar</button>
+                            <button class="button" type="button">Editar</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-6 col-12" lang="es">
+                    <article class="review-item">
+                        <table>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Nombre:</strong>
+                                </th>
+                                <td>Álvaro García</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Fecha:</strong>
+                                </th>
+                                <td>11/01/2020</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Opinión:</strong>
+                                </th>
+                                <td>La portada está bien, aunque esperaba algo más del álbum. Aun así, suena bastante
+                                    bien.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <strong>Valoración:</strong>
+                                </th>
+                                <td>2★</td>
+                            </tr>
+                        </table>
+                        <div class="review-actions">
+                            <button class="button" type="button">Eliminar</button>
+                            <button class="button" type="button">Editar</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Shared footer: opening hours and return-to-top link. -->
+    <footer class="site-footer">
+        <div class="container-fluid">
+            <div class="row align-items-center py-4 justify-content-between">
+                <div class="col-auto mb-3 mb-md-0">
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="brand-name h4 mb-1">VINYL DEVS</p>
+                            <p class="brand-tagline small mb-0">Your favorite record shop</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
+                    <h3 class="schedule-title h5 mb-3" id="opening-hours">Opening Hours</h3>
+                    <div class="schedule-days">
+                        <p class="mb-1">Monday - Friday: 10:00 - 20:00</p>
+                        <p class="mb-1">Saturday: 09:00 - 22:00</p>
+                        <p class="mb-0">Sunday: 11:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="col-auto text-center">
+                    <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
+                        <i aria-hidden="true" class="fas fa-chevron-up me-2">
+                        </i>
+                        Back to Top
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
 </html>

@@ -343,3 +343,32 @@
     color: #7f8c8d;
     font-size: 0.9rem;
 }
+
+/* Reviews */
+.review-item {
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border: 2px solid #764ba2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.review-item table {
+    flex: 1 1 260px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.review-item th,
+.review-item td {
+    padding: 0.5em;
+}
+
+.review-actions {
+    display: flex;
+    gap: 0.5rem;
+}
