@@ -1,3 +1,9 @@
+/* EDITING MAP
+   Bootstrap owns columns and standard form controls.
+   This file owns the brand, colours, cards and page-specific spacing.
+   Classes are presentation hooks, not JavaScript classes.
+*/
+
 /* 1. Header and logo */
 .site-header {
     background: #263238;
@@ -182,7 +188,8 @@
     transition: opacity 0.3s ease;
 }
 
-.album-card:hover .cover-overlay {
+.album-card:hover .cover-overlay,
+.album-card:focus-within .cover-overlay {
     opacity: 1;
 }
 
@@ -246,23 +253,27 @@
     margin: 1rem 0;
 }
 
-/* Format filter: static controls until phase 2. */
-.header-tools {
+/* 4. Album form */
+/* The outer panel draws the gradient border; the form is its inner surface. */
+.form-panel {
     display: flex;
-    align-items: end;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    color: white;
+    justify-content: center;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #4ECDC4 0%, #FF6B6B 100%);
+    padding: 5px;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
 }
 
-.format-options {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+.form-surface {
+    border-radius: 15px;
+    background: linear-gradient(135deg, #e9ecf0 0%, #b5c1d5 100%);
+    padding: 30px;
+    width: 100%;
 }
 
-/* Footer */
+/* 5. Footer */
 .site-footer {
     background: #263238;
     position: relative;
@@ -303,7 +314,7 @@
     padding-right: 2rem;
 }
 
-/* Album detail */
+/* 6. Album detail and reviews */
 .detail-layout {
     margin-top: 2em;
     margin-bottom: 2em;
@@ -344,7 +355,6 @@
     font-size: 0.9rem;
 }
 
-/* Reviews */
 .review-item {
     flex-wrap: wrap;
     max-width: 600px;
@@ -373,24 +383,60 @@
     gap: 0.5rem;
 }
 
-
-/* 4. Album form */
-/* The outer panel draws the gradient border; the form is its inner surface. */
-.form-panel {
+/* 7. Format filter: static controls until phase 2. */
+.header-tools {
     display: flex;
-    justify-content: center;
-    border-radius: 15px;
-    background: linear-gradient(135deg, #4ECDC4 0%, #FF6B6B 100%);
-    padding: 5px;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
+    align-items: end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: white;
 }
 
-.form-surface {
-    border-radius: 15px;
-    background: linear-gradient(135deg, #e9ecf0 0%, #b5c1d5 100%);
-    padding: 30px;
-    width: 100%;
+.format-options {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
+/* 8. Small screens: preserve the Bootstrap column layout. */
+@media (max-width: 767px) {
+    .brand-name {
+        font-size: 1.75rem;
+    }
+
+    .page-title {
+        font-size: 2.25rem;
+    }
+
+    .site-nav ul {
+        gap: 0.25rem;
+    }
+
+    .review-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .review-actions {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .form-surface {
+        padding: 20px;
+    }
+
+    .site-footer .container-fluid {
+        padding: 0 1rem;
+    }
+}
+
+@media (hover: none) {
+    .cover-overlay {
+        opacity: 1;
+        background: transparent;
+        align-items: end;
+        padding: 0.5rem;
+    }
+}
