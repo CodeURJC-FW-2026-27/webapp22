@@ -1,0 +1,239 @@
+[
+    {
+        "album_title": "Av. Rafaela Ybarra",
+        "artist": "Ill Pekeño",
+        "record_price": 45.99,
+        "cover_image": "Av._Rafaela_Ybarra.png",
+        "description": "Av. Rafaela Ybarra es el EP colaborativo que consolidó a Ill Pekeño y Ergo Pro como referentes del rap underground madrileño en mayo de 2021. El proyecto destaca por su sonido crudo de boom bap clásico, ritmos oscuros y letras directas sobre la vida en las calles del distrito de Usera. A través de sus cortes, el dúo demuestra una química lírica impecable y una estética callejera auténtica que marcó un antes y un después en la escena nacional.",
+        "release_date": "2021-05-14",
+        "format": "vinyl",
+        "reviews": [
+            {
+                "review_title": "Una gran portada",
+                "nickname": "Lucía Martínez",
+                "review_date": "2026-11-01",
+                "opinion": "El álbum me ha encantado y la portada es espectacular. Me alegro mucho de tener este vinilo en mi colección.",
+                "rating": 5
+            },
+            {
+                "review_title": "Buen sonido",
+                "nickname": "Javier López",
+                "review_date": "2026-11-02",
+                "opinion": "Me gusta mucho el sonido del álbum y el diseño de la portada. Una buena incorporación a mi colección.",
+                "rating": 3
+            },
+            {
+                "review_title": "Muy recomendable",
+                "nickname": "Marta Sánchez",
+                "review_date": "2026-11-03",
+                "opinion": "La portada destaca un montón y el vinilo queda genial expuesto. Además, se escucha de maravilla.",
+                "rating": 4
+            },
+            {
+                "review_title": "Esperaba algo más",
+                "nickname": "Álvaro García",
+                "review_date": "2026-11-04",
+                "opinion": "La portada está bien, aunque esperaba algo más del álbum. Aun así, suena bastante bien.",
+                "rating": 2
+            }
+        ]
+    },
+    {
+        "album_title": "BBO",
+        "artist": "Hoke",
+        "record_price": 89.99,
+        "cover_image": "BBO.png",
+        "description": "Datos de demostración de MUSIX para BBO. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "lp",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "Efugio",
+        "artist": "Jaloner",
+        "record_price": 32.99,
+        "cover_image": "Efugio.png",
+        "description": "Datos de demostración de MUSIX para Efugio. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "digital",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "La Madrugá",
+        "artist": "Delaossa",
+        "record_price": 67.99,
+        "cover_image": "La_Madrugá.png",
+        "description": "Datos de demostración de MUSIX para La Madrugá. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "cd",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "Maracucho Bueno Muere Chiquito",
+        "artist": "Cruz Cafuné",
+        "record_price": 55.99,
+        "cover_image": "Maracucho_Bueno_Muere_Chiquito.png",
+        "description": "Datos de demostración de MUSIX para Maracucho Bueno Muere Chiquito. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "vinyl",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "Meds",
+        "artist": "Placebo",
+        "record_price": 12.99,
+        "cover_image": "Meds.png",
+        "description": "Datos de demostración de MUSIX para Meds. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "lp",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "Moonlight922",
+        "artist": "Cruz Cafuné",
+        "record_price": 78.99,
+        "cover_image": "Moonlight922.png",
+        "description": "Datos de demostración de MUSIX para Moonlight922. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "digital",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "P.E.K.E.",
+        "artist": "Ill Pekeño",
+        "record_price": 69.99,
+        "cover_image": "P.E.K.E..png",
+        "description": "Datos de demostración de MUSIX para P.E.K.E.. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "cd",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "Pangea, la grieta",
+        "artist": "Jaloner",
+        "record_price": 35.99,
+        "cover_image": "Pangea_la_grieta.png",
+        "description": "Datos de demostración de MUSIX para Pangea, la grieta. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "vinyl",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "Playa Virginia",
+        "artist": "Delaossa",
+        "record_price": 52.99,
+        "cover_image": "Playa_Virginia.png",
+        "description": "Datos de demostración de MUSIX para Playa Virginia. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "lp",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "Sleeping with Ghosts",
+        "artist": "Placebo",
+        "record_price": 95.99,
+        "cover_image": "Sleeping_with_ghosts.png",
+        "description": "Datos de demostración de MUSIX para Sleeping with Ghosts. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "digital",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    },
+    {
+        "album_title": "TRES CREUS",
+        "artist": "Hoke",
+        "record_price": 42.99,
+        "cover_image": "TRES_CREUS.png",
+        "description": "Datos de demostración de MUSIX para TRES CREUS. La fecha y el formato son valores de prueba, no información discográfica verificada.",
+        "release_date": "2020-01-01",
+        "format": "cd",
+        "reviews": [
+            {
+                "review_title": "Buena incorporación",
+                "nickname": "Usuario demo",
+                "review_date": "2026-11-01",
+                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "rating": 4
+            }
+        ]
+    }
+]
