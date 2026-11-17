@@ -376,6 +376,15 @@
 .review-item th,
 .review-item td {
     padding: 0.5em;
+    vertical-align: top;
+}
+
+.review-item th {
+    white-space: nowrap;
+}
+
+.review-item td {
+    word-break: break-word;
 }
 
 .review-actions {
