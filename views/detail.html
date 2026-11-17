@@ -11,53 +11,7 @@
 </head>
 
 <body>
-    <!-- Shared header: keep navigation and format options identical on all three pages. -->
-    <header class="site-header" id="top">
-        <div class="container-fluid">
-            <div class="row align-items-center header-row">
-                <div class="col-12 col-md-6 header-column mb-3">
-                    <div class="brand">
-                        <div aria-hidden="true" class="record-logo">
-                            <div class="record-middle">
-                                <div class="record-label"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="brand-name">MUSIX</p>
-                            <p class="brand-tagline">Tu tienda de discos favorita</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 header-column">
-                    <nav aria-label="Main navigation" class="site-nav">
-                        <ul>
-                            <li>
-                                <a class="nav-link" href="/">Inicio</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/#albums">Álbumes</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/new-element">Añadir álbum</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#opening-hours">Horario</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <div class="container header-tools">
-            <div aria-label="Álbum formats" class="format-options" role="group">
-                <span>Formatos</span>
-                <button class="nav-link" type="button">LP</button>
-                <button class="nav-link" type="button">Vinilo</button>
-                <button class="nav-link" type="button">Digital</button>
-                <button class="nav-link" type="button">CD</button>
-            </div>
-        </div>
-    </header>
+    {{>header}}
     <main id="album-detail">
         <div class="container-fluid detail-layout">
             <div class="row">
@@ -281,41 +235,7 @@
             </div>
         </div>
     </main>
-    <!-- Shared footer: opening hours and return-to-top link. -->
-    <footer class="site-footer">
-        <div class="container-fluid">
-            <div class="row align-items-center py-4 justify-content-between">
-                <div class="col-auto mb-3 mb-md-0">
-                    <div class="brand">
-                        <div aria-hidden="true" class="record-logo">
-                            <div class="record-middle">
-                                <div class="record-label"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="brand-name h4 mb-1">MUSIX</p>
-                            <p class="brand-tagline small mb-0">Tu tienda de discos favorita</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
-                    <h3 class="schedule-title h5 mb-3" id="opening-hours">Horario de apertura</h3>
-                    <div class="schedule-days">
-                        <p class="mb-1">Lunes - Viernes: 10:00 - 20:00</p>
-                        <p class="mb-1">Sábado: 09:00 - 22:00</p>
-                        <p class="mb-0">Domingo: 11:00 - 18:00</p>
-                    </div>
-                </div>
-                <div class="col-auto text-center">
-                    <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
-                        <i aria-hidden="true" class="fas fa-chevron-up me-2">
-                        </i>
-                        Volver arriba
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {{>footer}}
 </body>
 
 </html>

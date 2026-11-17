@@ -1,0 +1,54 @@
+    <header class="site-header" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center header-row">
+                <div class="col-12 col-md-6 header-column mb-3">
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="brand-name">{{siteName}}</p>
+                            <p class="brand-tagline">Tu tienda de discos favorita</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 header-column">
+                    <nav aria-label="Main navigation" class="site-nav">
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="/">Inicio</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/#albums">Álbumes</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/new-element">Añadir álbum</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#opening-hours">Horario</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container header-tools">
+            <!-- Phase 1: search layout only; title matching will be implemented on the server. -->
+            <form aria-label="Buscar álbumes" class="d-flex flex-wrap align-items-center gap-2" id="search-form"
+                role="search">
+                <label class="visually-hidden" for="search-title">Título del álbum</label>
+                <input class="form-control w-auto flex-grow-1" id="search-title" name="title"
+                    placeholder="Buscar por título" type="search">
+                <button class="button" type="button">Buscar</button>
+            </form>
+            <div aria-label="Álbum formats" class="format-options" role="group">
+                <span>Formatos</span>
+                <button class="nav-link" type="button">LP</button>
+                <button class="nav-link" type="button">Vinilo</button>
+                <button class="nav-link" type="button">Digital</button>
+                <button class="nav-link" type="button">CD</button>
+            </div>
+        </div>
+    </header>
