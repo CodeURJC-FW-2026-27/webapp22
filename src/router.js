@@ -1,5 +1,5 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum } from './albums.js';
 
 const router = express.Router();
 export default router;
@@ -19,8 +19,7 @@ router.get('/', async (req, res) => {
 
     const albums = await getAlbumsPage(currentPage, pageSize);
     for (const album of albums) {
-        album.displayPrice = album.record_price.toFixed(2);
-        album.coverUrl = '/uploads/' + encodeURIComponent(album.cover_image);
+        prepareAlbumDisplay(album);
     }
 
     const pages = [];
@@ -44,9 +43,49 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/detail', (req, res) => {
-    res.render('detail');
+    res.redirect('/');
+});
+
+router.get('/albums/:id', async (req, res) => {
+    const album = await getAlbum(req.params.id);
+
+    if (!album) {
+        res.status(404).render('detail', {
+            pageTitle: 'Álbum no encontrado'
+        });
+        return;
+    }
+
+    prepareAlbumDisplay(album);
+    const formatLabels = {
+        lp: 'LP',
+        vinyl: 'Vinilo',
+        digital: 'Digital',
+        cd: 'CD'
+    };
+    album.displayFormat = formatLabels[album.format];
+    album.displayReleaseDate = formatDate(album.release_date);
+
+    for (const review of album.reviews) {
+        review.displayDate = formatDate(review.review_date);
+    }
+
+    res.render('detail', {
+        pageTitle: album.album_title,
+        album: album
+    });
 });
 
 router.get('/new-element', (req, res) => {
     res.render('new-element');
 });
+
+function prepareAlbumDisplay(album) {
+    album.displayPrice = album.record_price.toFixed(2);
+    album.coverUrl = '/uploads/' + encodeURIComponent(album.cover_image);
+}
+
+function formatDate(date) {
+    const parts = date.split('-');
+    return parts[2] + '/' + parts[1] + '/' + parts[0];
+}

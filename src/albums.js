@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 const client = new MongoClient('mongodb://127.0.0.1:27017', {
     serverSelectionTimeoutMS: 5000
@@ -32,4 +32,11 @@ export async function getAlbumsPage(page, pageSize) {
         .skip((page - 1) * pageSize)
         .limit(pageSize)
         .toArray();
+}
+
+export async function getAlbum(id) {
+    if (!ObjectId.isValid(id)) {
+        return null;
+    }
+    return await albums.findOne({ _id: new ObjectId(id) });
 }

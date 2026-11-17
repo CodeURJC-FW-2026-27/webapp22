@@ -30,12 +30,12 @@
                         <div class="cover-frame">
                             <img alt="Portada de {{album_title}}" src="{{coverUrl}}">
                             <div class="cover-overlay">
-                                <a aria-label="Ver detalles: {{album_title}}" class="button" href="/detail">Ver detalles</a>
+                                <a aria-label="Ver detalles: {{album_title}}" class="button" href="/albums/{{_id}}">Ver detalles</a>
                             </div>
                         </div>
                         <div class="album-info">
                             <h3 class="album-title">
-                                <a href="/detail">{{album_title}}</a>
+                                <a href="/albums/{{_id}}">{{album_title}}</a>
                             </h3>
                             <div class="album-meta">{{artist}}</div>
                             <div class="price">€{{displayPrice}}</div>

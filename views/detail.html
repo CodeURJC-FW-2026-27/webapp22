@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Av. Rafaela Ybarra | MUSIX</title>
+    <title>{{pageTitle}} | {{siteName}}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="/styles/style.css" rel="stylesheet">
@@ -13,28 +13,22 @@
 <body>
     {{>header}}
     <main id="album-detail">
+        {{#album}}
         <div class="container-fluid detail-layout">
             <div class="row">
                 <div class="col-lg-6 col-12 detail-cover">
-                    <img alt="Av. Rafaela Ybarra album cover" src="/images/Av._Rafaela_Ybarra.png">
+                    <img alt="Portada de {{album_title}}" src="{{coverUrl}}">
                 </div>
                 <div class="col-lg-6 col-12 m-auto">
                     <div class="album-details text-center">
-                        <h1 class="album-title">Av. Rafaela Ybarra</h1>
-                        <div class="price">45.99€</div>
-                        <div lang="es">Av. Rafaela Ybarra es el EP colaborativo que consolidó a Ill Pekeño y Ergo Pro
-                            como referentes del rap underground
-                            madrileño en mayo de 2021. El proyecto destaca por su sonido crudo de boom bap clásico,
-                            ritmos oscuros y letras directas
-                            sobre la vida en las calles del distrito de Usera. A través de sus cortes, el dúo demuestra
-                            una química lírica impecable
-                            y una estética callejera auténtica que marcó un antes y un después en la escena nacional.
-                        </div>
+                        <h1 class="album-title">{{album_title}}</h1>
+                        <div class="price">{{displayPrice}}€</div>
+                        <div lang="es">{{description}}</div>
                         <p></p>
-                        <div class="album-meta">Artista: Ill Pekeño</div>
-                        <div class="album-meta">Formato: Vinilo</div>
-                        <p class="release-date">Fecha de lanzamiento: 14 de mayo de 2021</p>
-                        <!-- Phase 1 actions are static. Navigation uses links. -->
+                        <div class="album-meta">Artista: {{artist}}</div>
+                        <div class="album-meta">Formato: {{displayFormat}}</div>
+                        <p class="release-date">Fecha de lanzamiento: {{displayReleaseDate}}</p>
+                        <!-- Editing and deletion will be implemented in later commits. -->
                         <div class="album-actions">
                             <button class="button" type="button">Borrar</button>
                             <button class="button" type="button">Editar</button>
@@ -77,38 +71,30 @@
             </div>
         </div>
         <div class="container-fluid">
-            <!-- Reviews: repeat one Bootstrap column per review. -->
             <div class="row">
+                {{#reviews}}
                 <div class="col-lg-6 col-12" lang="es">
                     <article class="review-item">
                         <table>
                             <tr>
-                                <th scope="row">
-                                    <strong>Nombre:</strong>
-                                </th>
-                                <td>Lucía Martínez</td>
+                                <th scope="row"><strong>Título:</strong></th>
+                                <td>{{review_title}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">
-                                    <strong>Fecha:</strong>
-                                </th>
-                                <td>14/02/2023</td>
+                                <th scope="row"><strong>Nombre:</strong></th>
+                                <td>{{nickname}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">
-                                    <strong>Opinión:</strong>
-                                </th>
-                                <td>
-                                    El álbum me ha encantado y la portada es espectacular. Me alegro mucho de tener este
-                                    vinilo
-                                    en mi colección.
-                                </td>
+                                <th scope="row"><strong>Fecha:</strong></th>
+                                <td>{{displayDate}}</td>
                             </tr>
                             <tr>
-                                <th scope="row">
-                                    <strong>Valoración:</strong>
-                                </th>
-                                <td>5★</td>
+                                <th scope="row"><strong>Opinión:</strong></th>
+                                <td>{{opinion}}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><strong>Valoración:</strong></th>
+                                <td>{{rating}}★</td>
                             </tr>
                         </table>
                         <div class="review-actions">
@@ -117,123 +103,22 @@
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-6 col-12" lang="es">
-                    <article class="review-item">
-                        <table>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Nombre:</strong>
-                                </th>
-                                <td>Javier López</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Fecha:</strong>
-                                </th>
-                                <td>12/01/2022</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Opinión:</strong>
-                                </th>
-                                <td>
-                                    Me gusta mucho el sonido del álbum y el diseño de la portada. Una buena
-                                    incorporación a mi
-                                    colección.
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Valoración:</strong>
-                                </th>
-                                <td>3★</td>
-                            </tr>
-                        </table>
-                        <div class="review-actions">
-                            <button class="button" type="button">Borrar</button>
-                            <button class="button" type="button">Editar</button>
-                        </div>
-                    </article>
+                {{/reviews}}
+                {{^reviews}}
+                <div class="col-12">
+                    <p class="text-center">Este álbum todavía no tiene reseñas.</p>
                 </div>
+                {{/reviews}}
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-12" lang="es">
-                    <article class="review-item">
-                        <table>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Nombre:</strong>
-                                </th>
-                                <td>Marta Sánchez</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Fecha:</strong>
-                                </th>
-                                <td>13/04/2021</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Opinión:</strong>
-                                </th>
-                                <td>
-                                    La portada destaca un montón y el vinilo queda genial expuesto. Además, se escucha
-                                    de
-                                    maravilla.
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Valoración:</strong>
-                                </th>
-                                <td>4★</td>
-                            </tr>
-                        </table>
-                        <div class="review-actions">
-                            <button class="button" type="button">Borrar</button>
-                            <button class="button" type="button">Editar</button>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-6 col-12" lang="es">
-                    <article class="review-item">
-                        <table>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Nombre:</strong>
-                                </th>
-                                <td>Álvaro García</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Fecha:</strong>
-                                </th>
-                                <td>11/01/2020</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Opinión:</strong>
-                                </th>
-                                <td>La portada está bien, aunque esperaba algo más del álbum. Aun así, suena bastante
-                                    bien.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <strong>Valoración:</strong>
-                                </th>
-                                <td>2★</td>
-                            </tr>
-                        </table>
-                        <div class="review-actions">
-                            <button class="button" type="button">Borrar</button>
-                            <button class="button" type="button">Editar</button>
-                        </div>
-                    </article>
-                </div>
-            </div>
+        {{/album}}
+        {{^album}}
+        <div class="container py-5 text-center">
+            <h1 class="page-title">Álbum no encontrado</h1>
+            <p>El identificador no es válido o el álbum ya no existe.</p>
+            <a class="button" href="/">Volver al catálogo</a>
         </div>
+        {{/album}}
     </main>
     {{>footer}}
 </body>
