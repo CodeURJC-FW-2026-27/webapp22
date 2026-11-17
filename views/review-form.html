@@ -1,0 +1,36 @@
+{{#reviewForm}}
+<form id="review-form" action="{{action}}" method="post">
+    <h2 class="h5">{{heading}}</h2>
+    <div class="mb-3">
+        <label class="form-label" for="review-title">Título</label>
+        <input class="form-control" id="review-title" name="review_title" value="{{review.review_title}}" placeholder="Título de la reseña" required type="text">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="nickname">Nombre</label>
+        <input class="form-control" id="nickname" name="nickname" value="{{review.nickname}}" placeholder="Tu alias" required
+            type="text">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="review-date">Fecha</label>
+        <input class="form-control" id="review-date" name="review_date" value="{{review.review_date}}" min="0001-01-01" max="9999-12-31" required type="date">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="opinion">Opinión</label>
+        <textarea class="form-control" id="opinion" name="opinion" placeholder="Escribe una reseña"
+            required rows="4">{{review.opinion}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="rating">Valoración</label>
+        <select class="form-select" id="rating" name="rating" required>
+            <option disabled {{^review.rating}}selected{{/review.rating}} value="">Elige una valoración</option>
+            {{#ratings}}
+            <option value="{{value}}" {{#selected}}selected{{/selected}}>{{value}}★</option>
+            {{/ratings}}
+        </select>
+    </div>
+    <div class="text-center">
+        <button class="button" type="submit">{{submitLabel}}</button>
+        {{#isEditing}}<a class="button" href="{{cancelUrl}}">Cancelar</a>{{/isEditing}}
+    </div>
+</form>
+{{/reviewForm}}

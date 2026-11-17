@@ -36,41 +36,7 @@
                             <a class="button" href="/">Volver a la página principal</a>
                         </div>
                     </div>
-                    <form id="review-form" action="/albums/{{_id}}/reviews" method="post">
-                        <h2 class="h5">¡Deja tu reseña!</h2>
-                        <div class="mb-3">
-                            <label class="form-label" for="review-title">Título</label>
-                            <input class="form-control" id="review-title" name="review_title" placeholder="Título de la reseña" required type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="nickname">Nombre</label>
-                            <input class="form-control" id="nickname" name="nickname" placeholder="Tu alias" required
-                                type="text">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="review-date">Fecha</label>
-                            <input class="form-control" id="review-date" name="review_date" min="0001-01-01" max="9999-12-31" required type="date">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="opinion">Opinión</label>
-                            <textarea class="form-control" id="opinion" name="opinion" placeholder="Escribe una reseña"
-                                required rows="4"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="rating">Valoración</label>
-                            <select class="form-select" id="rating" name="rating" required>
-                                <option disabled selected value="">Elige una valoración</option>
-                                <option value="1">1★</option>
-                                <option value="2">2★</option>
-                                <option value="3">3★</option>
-                                <option value="4">4★</option>
-                                <option value="5">5★</option>
-                            </select>
-                        </div>
-                        <div class="text-center">
-                            <button class="button" type="submit">Crear</button>
-                        </div>
-                    </form>
+                    {{>review-form}}
                 </div>
             </div>
         </div>
@@ -103,7 +69,7 @@
                         </table>
                         <div class="review-actions">
                             <button class="button" type="button">Borrar</button>
-                            <button class="button" type="button">Editar</button>
+                            <a class="button" href="/albums/{{albumId}}/reviews/{{_id}}/edit">Editar</a>
                         </div>
                     </article>
                 </div>

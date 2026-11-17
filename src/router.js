@@ -1,5 +1,5 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum, addReview } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum, addReview, updateReview } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
 import { albumRules, validateAlbumFields, validateReviewFields } from './validation.js';
@@ -71,40 +71,92 @@ router.get('/albums/:id', async (req, res) => {
 
     for (const review of album.reviews) {
         review.displayDate = formatDate(review.review_date);
+        review.albumId = album._id;
     }
 
     res.render('detail', {
         pageTitle: album.album_title,
+        reviewForm: makeReviewForm(album._id),
         album: album
     });
 });
 
-router.post('/albums/:id/reviews', async (req, res) => {
+router.get('/albums/:id/reviews/:reviewId/edit', async (req, res) => {
     const album = await getAlbum(req.params.id);
     if (!album) return showMissingAlbum(res);
-
-    const { review, errors } = validateReviewFields(req.body, album.reviews);
-    if (errors.length > 0) return showReviewErrors(res, req.params.id, errors);
-
-    const added = await addReview(req.params.id, review);
-    if (!added) {
-        if (!await getAlbum(req.params.id)) return showMissingAlbum(res);
-        return showReviewErrors(res, req.params.id, ['Ya existe una reseña con ese título en este álbum.']);
-    }
-    res.status(201).render('confirmation', {
-        pageTitle: 'Reseña creada',
-        messages: ['La reseña se ha añadido al álbum correctamente.'],
-        returnUrl: '/albums/' + req.params.id,
-        returnLabel: 'Volver al álbum'
+    const review = album.reviews.find(item => String(item._id) === req.params.reviewId);
+    if (!review) return showMissingReview(res, req.params.id);
+    res.render('edit-review', {
+        pageTitle: 'Editar reseña',
+        albumTitle: album.album_title,
+        reviewForm: makeReviewForm(album._id, review)
     });
 });
 
-function showReviewErrors(res, albumId, messages) {
+function makeReviewForm(albumId, review = {}) {
+    const isEditing = Boolean(review._id);
+    const ratings = [];
+    for (let value = 1; value <= 5; value++) {
+        ratings.push({ value: value, selected: value === review.rating });
+    }
+    return {
+        review: review, ratings: ratings, isEditing: isEditing,
+        action: '/albums/' + albumId + '/reviews' + (isEditing ? '/' + review._id + '/edit' : ''),
+        heading: isEditing ? 'Modifica tu reseña' : '¡Deja tu reseña!',
+        submitLabel: isEditing ? 'Guardar' : 'Crear',
+        cancelUrl: '/albums/' + albumId
+    };
+}
+
+router.post('/albums/:id/reviews', saveReview);
+router.post('/albums/:id/reviews/:reviewId/edit', saveReview);
+
+async function saveReview(req, res) {
+    const album = await getAlbum(req.params.id);
+    if (!album) return showMissingAlbum(res);
+    const reviewId = req.params.reviewId || '';
+    if (reviewId && !album.reviews.some(item => String(item._id) === reviewId)) {
+        return showMissingReview(res, req.params.id);
+    }
+    const { review, errors } = validateReviewFields(req.body, album.reviews, reviewId);
+    if (errors.length > 0) return showReviewErrors(req, res, errors);
+
+    const saved = reviewId
+        ? await updateReview(req.params.id, reviewId, review)
+        : await addReview(req.params.id, review);
+    if (!saved) {
+        const currentAlbum = await getAlbum(req.params.id);
+        if (!currentAlbum) return showMissingAlbum(res);
+        if (reviewId && !currentAlbum.reviews.some(item => String(item._id) === reviewId)) {
+            return showMissingReview(res, req.params.id);
+        }
+        return showReviewErrors(req, res, ['Ya existe una reseña con ese título en este álbum.']);
+    }
+    res.status(reviewId ? 200 : 201).render('confirmation', {
+        pageTitle: reviewId ? 'Reseña actualizada' : 'Reseña creada',
+        messages: [reviewId ? 'Los cambios de la reseña se han guardado correctamente.'
+            : 'La reseña se ha añadido al álbum correctamente.'],
+        returnUrl: '/albums/' + req.params.id,
+        returnLabel: 'Volver al álbum'
+    });
+}
+
+function showReviewErrors(req, res, messages) {
     return res.status(400).render('error', {
         pageTitle: 'No se pudo guardar la reseña',
         messages: messages,
-        returnUrl: '/albums/' + albumId + '#review-form',
+        returnUrl: '/albums/' + req.params.id + (req.params.reviewId
+            ? '/reviews/' + req.params.reviewId + '/edit' : '#review-form'),
         returnLabel: 'Volver al formulario'
+    });
+}
+
+function showMissingReview(res, albumId) {
+    return res.status(404).render('error', {
+        pageTitle: 'Reseña no encontrada',
+        messages: ['La reseña no existe en este álbum.'],
+        returnUrl: '/albums/' + albumId,
+        returnLabel: 'Volver al álbum'
     });
 }
 

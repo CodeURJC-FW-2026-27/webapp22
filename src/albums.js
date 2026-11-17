@@ -101,3 +101,23 @@ export async function addReview(albumId, review) {
     );
     return result.modifiedCount === 1;
 }
+
+export async function updateReview(albumId, reviewId, review) {
+    if (!ObjectId.isValid(albumId) || !ObjectId.isValid(reviewId)) return false;
+    const id = new ObjectId(reviewId);
+    const result = await albums.updateOne(
+        {
+            _id: new ObjectId(albumId),
+            reviews: { $elemMatch: { _id: id } },
+            $nor: [{ reviews: { $elemMatch: { _id: { $ne: id }, review_title: review.review_title } } }]
+        },
+        { $set: {
+            'reviews.$.review_title': review.review_title,
+            'reviews.$.nickname': review.nickname,
+            'reviews.$.review_date': review.review_date,
+            'reviews.$.opinion': review.opinion,
+            'reviews.$.rating': review.rating
+        } }
+    );
+    return result.matchedCount === 1;
+}
