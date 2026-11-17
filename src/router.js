@@ -1,5 +1,5 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
 import { albumRules, validateAlbumFields } from './validation.js';
@@ -76,6 +76,25 @@ router.get('/albums/:id', async (req, res) => {
     res.render('detail', {
         pageTitle: album.album_title,
         album: album
+    });
+});
+
+router.post('/albums/:id/delete', async (req, res) => {
+    const album = await deleteAlbum(req.params.id);
+    if (!album) return showMissingAlbum(res);
+
+    const messages = ['El álbum y sus reseñas se han eliminado correctamente.'];
+    try {
+        await removeCover(album.cover_image);
+    } catch (error) {
+        console.error(error);
+        messages.push('No se pudo eliminar el archivo de la portada.');
+    }
+    res.render('confirmation', {
+        pageTitle: 'Álbum eliminado',
+        messages: messages,
+        returnUrl: '/',
+        returnLabel: 'Volver al catálogo'
     });
 });
 

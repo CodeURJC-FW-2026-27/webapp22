@@ -81,3 +81,13 @@ export async function updateAlbum(id, album, previousCover) {
     );
     return result.matchedCount === 1;
 }
+
+export async function deleteAlbum(id) {
+    if (!ObjectId.isValid(id)) {
+        return null;
+    }
+    return await albums.findOneAndDelete(
+        { _id: new ObjectId(id) },
+        { includeResultMetadata: false }
+    );
+}
