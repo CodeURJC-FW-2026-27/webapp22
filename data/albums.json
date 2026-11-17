@@ -40,36 +40,64 @@
     },
     {
         "album_title": "BBO",
-        "artist": "Hoke",
+        "artist": "Hoke & Louis Amoeba",
         "record_price": 89.99,
         "cover_image": "BBO.png",
-        "description": "Datos de demostración de MUSIX para BBO. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Álbum colaborativo de Hoke y Louis Amoeba publicado el 15 de septiembre de 2022. Esta edición incluye 11 pistas de hip-hop y rap con una producción cuidada que consolidó el proyecto como uno de los lanzamientos clave del género.",
+        "release_date": "2022-09-15",
         "format": "lp",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Bases con mucha personalidad",
+                "nickname": "LadoB",
+                "review_date": "2026-11-05",
+                "opinion": "Me gusta cómo se complementan las bases con las voces. En vinilo lo disfruto de principio a fin.",
+                "rating": 5
+            },
+            {
+                "review_title": "Un disco muy sólido",
+                "nickname": "SurcoRojo",
+                "review_date": "2026-11-06",
+                "opinion": "Tiene un sonido compacto y varias escuchas me han hecho apreciar mejor sus detalles.",
+                "rating": 4
+            },
+            {
+                "review_title": "Buena escucha",
+                "nickname": "NubeGris",
+                "review_date": "2026-11-07",
+                "opinion": "Me ha gustado, aunque algunos temas me llegan más que otros. La edición queda muy bien en la colección.",
                 "rating": 4
             }
         ]
     },
     {
         "album_title": "Efugio",
-        "artist": "Jaloner",
+        "artist": "Jaloner & Dabeunotres",
         "record_price": 32.99,
         "cover_image": "Efugio.png",
-        "description": "Datos de demostración de MUSIX para Efugio. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Proyecto colaborativo de Jaloner y Dabeunotres publicado en 2022. Reúne siete pistas de rap y hip-hop en una edición breve y directa centrada en la lírica y la química de ambos artistas.",
+        "release_date": "2022-01-01",
         "format": "digital",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Un EP directo",
+                "nickname": "PistaOcho",
+                "review_date": "2026-11-05",
+                "opinion": "Las siete pistas mantienen el interés y el proyecto se escucha muy bien seguido.",
+                "rating": 5
+            },
+            {
+                "review_title": "Me ha sorprendido",
+                "nickname": "RitmoNorte",
+                "review_date": "2026-11-06",
+                "opinion": "No conocía el trabajo de los dos artistas juntos. Me ha parecido una escucha interesante.",
+                "rating": 4
+            },
+            {
+                "review_title": "Para volver a ponerlo",
+                "nickname": "Surcos",
+                "review_date": "2026-11-07",
+                "opinion": "Un lanzamiento corto y fácil de recomendar si te gusta el rap.",
                 "rating": 4
             }
         ]
@@ -79,15 +107,29 @@
         "artist": "Delaossa",
         "record_price": 67.99,
         "cover_image": "La_Madrugá.png",
-        "description": "Datos de demostración de MUSIX para La Madrugá. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Álbum de estudio de Delaossa publicado el 20 de marzo de 2025. Compuesto por 17 pistas, el proyecto combina rap introspectivo con sonidos orgánicos y una producción muy cuidada que refleja la madurez artística del rapero malagueño.",
+        "release_date": "2025-03-20",
         "format": "cd",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Un trabajo muy maduro",
+                "nickname": "BrisaDelSur",
+                "review_date": "2026-11-05",
+                "opinion": "Se nota el tiempo y el mimo detrás de cada tema. Las letras tienen mucha profundidad y la producción acompaña a la perfección.",
+                "rating": 5
+            },
+            {
+                "review_title": "Gran evolución",
+                "nickname": "MalagaBeats",
+                "review_date": "2026-11-06",
+                "opinion": "Un disco muy completo que gana con cada escucha. Tiene momentos muy íntimos y otros con mucha fuerza.",
+                "rating": 5
+            },
+            {
+                "review_title": "Muy recomendable",
+                "nickname": "AgujaFina",
+                "review_date": "2026-11-07",
+                "opinion": "Me ha gustado mucho el enfoque del álbum y el acabado de la edición en CD.",
                 "rating": 4
             }
         ]
@@ -97,15 +139,29 @@
         "artist": "Cruz Cafuné",
         "record_price": 55.99,
         "cover_image": "Maracucho_Bueno_Muere_Chiquito.png",
-        "description": "Datos de demostración de MUSIX para Maracucho Bueno Muere Chiquito. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Álbum debut de Cruz Cafuné publicado el 16 de marzo de 2018. Esta edición reúne 15 pistas de rap y R&B con identidad canaria que marcaron un punto de inflexión en la escena urbana española.",
+        "release_date": "2018-03-16",
         "format": "vinyl",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Un clásico de mi estantería",
+                "nickname": "CintaMarron",
+                "review_date": "2026-11-05",
+                "opinion": "Me gusta volver a este disco: tiene temas que siguen funcionando muy bien con cada escucha.",
+                "rating": 5
+            },
+            {
+                "review_title": "Muy buen rap",
+                "nickname": "RimaLenta",
+                "review_date": "2026-11-06",
+                "opinion": "Un álbum que disfruto especialmente por su variedad y por el tono de las canciones.",
+                "rating": 4
+            },
+            {
+                "review_title": "Disco recomendable",
+                "nickname": "PapelDePlata",
+                "review_date": "2026-11-07",
+                "opinion": "Me ha gustado descubrirlo completo. La edición en vinilo es un buen añadido para la colección.",
                 "rating": 4
             }
         ]
@@ -115,15 +171,29 @@
         "artist": "Placebo",
         "record_price": 12.99,
         "cover_image": "Meds.png",
-        "description": "Datos de demostración de MUSIX para Meds. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Quinto álbum de estudio de Placebo, publicado el 13 de marzo de 2006. Esta edición estándar contiene 13 pistas y destaca por un sonido más crudo y directo dentro del rock alternativo de la banda.",
+        "release_date": "2006-03-13",
         "format": "lp",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Placebo en gran forma",
+                "nickname": "AltavozSur",
+                "review_date": "2026-11-05",
+                "opinion": "Un disco que conserva mucha fuerza. Me gusta tanto para escucharlo entero como para volver a mis temas favoritos.",
+                "rating": 5
+            },
+            {
+                "review_title": "Muy buena edición",
+                "nickname": "AgujaNegra",
+                "review_date": "2026-11-06",
+                "opinion": "El álbum sigue sonando estupendamente y es una alegría tenerlo en la colección.",
+                "rating": 5
+            },
+            {
+                "review_title": "No falla",
+                "nickname": "NocheEnBucle",
+                "review_date": "2026-11-07",
+                "opinion": "Un buen disco de Placebo, aunque algunos de sus álbumes anteriores me gustan todavía más.",
                 "rating": 4
             }
         ]
@@ -133,15 +203,29 @@
         "artist": "Cruz Cafuné",
         "record_price": 78.99,
         "cover_image": "Moonlight922.png",
-        "description": "Datos de demostración de MUSIX para Moonlight922. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Segundo álbum de estudio de Cruz Cafuné, publicado el 10 de enero de 2020. Incluye 13 pistas de rap y R&B con una atmósfera nocturna y muy cuidada.",
+        "release_date": "2020-01-10",
         "format": "digital",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Una escucha muy personal",
+                "nickname": "LunaDeVinilo",
+                "review_date": "2026-11-05",
+                "opinion": "Tiene un ambiente propio y varias pistas que me apetece volver a escuchar.",
+                "rating": 5
+            },
+            {
+                "review_title": "Me ha gustado mucho",
+                "nickname": "RitualDeAguja",
+                "review_date": "2026-11-06",
+                "opinion": "Un álbum que descubrí por casualidad y que terminó quedándose en mi lista de favoritos.",
+                "rating": 4
+            },
+            {
+                "review_title": "Buen descubrimiento",
+                "nickname": "SurcoClaro",
+                "review_date": "2026-11-07",
+                "opinion": "Me gusta el conjunto, aunque hay temas que destacan bastante más para mí.",
                 "rating": 4
             }
         ]
@@ -151,34 +235,62 @@
         "artist": "Ill Pekeño",
         "record_price": 69.99,
         "cover_image": "P.E.K.E..png",
-        "description": "Datos de demostración de MUSIX para P.E.K.E.. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Álbum de Ill Pekeño publicado el 31 de mayo de 2024. Su título completo es P.E.K.E. (Poca Estatura Korazón Enorme) y la edición incluye nueve pistas de hip-hop y rap.",
+        "release_date": "2024-05-31",
         "format": "cd",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Nueve temas muy bien medidos",
+                "nickname": "MetroSur",
+                "review_date": "2026-11-05",
+                "opinion": "Me gusta que vaya al grano y que cada escucha me deje algún detalle nuevo.",
+                "rating": 5
+            },
+            {
+                "review_title": "Pekeño en estado puro",
+                "nickname": "RimaDeBarrio",
+                "review_date": "2026-11-06",
+                "opinion": "Tiene mucha personalidad y varias canciones que ya se han convertido en mis favoritas.",
+                "rating": 5
+            },
+            {
+                "review_title": "Buen trabajo",
+                "nickname": "DiscoAzul",
+                "review_date": "2026-11-07",
+                "opinion": "Un álbum sólido; algunos temas me gustan más que otros, pero merece la pena escucharlo entero.",
                 "rating": 4
             }
         ]
     },
     {
         "album_title": "Pangea, la grieta",
-        "artist": "Jaloner",
+        "artist": "Jaloner, Dabeunotres & bit KARMA",
         "record_price": 35.99,
         "cover_image": "Pangea_la_grieta.png",
-        "description": "Datos de demostración de MUSIX para Pangea, la grieta. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Pangea, la grieta es un álbum de rap y hip-hop publicado el 12 de diciembre de 2024. La edición reúne 12 pistas fruto de la colaboración entre Jaloner, Dabeunotres y bit KARMA.",
+        "release_date": "2024-12-12",
         "format": "vinyl",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Una colaboración muy cuidada",
+                "nickname": "GranoFino",
+                "review_date": "2026-11-05",
+                "opinion": "Me gusta cómo encajan las aportaciones de los artistas a lo largo de las 12 pistas.",
+                "rating": 5
+            },
+            {
+                "review_title": "Buen sonido de principio a fin",
+                "nickname": "AgujaDeCobre",
+                "review_date": "2026-11-06",
+                "opinion": "El disco funciona muy bien como conjunto y tiene una producción que invita a repetirlo.",
                 "rating": 4
+            },
+            {
+                "review_title": "Descubrimiento del año",
+                "nickname": "CaraB",
+                "review_date": "2026-11-07",
+                "opinion": "No conocía a todos los participantes y me ha parecido una colaboración muy interesante.",
+                "rating": 5
             }
         ]
     },
@@ -187,15 +299,29 @@
         "artist": "Delaossa",
         "record_price": 52.99,
         "cover_image": "Playa_Virginia.png",
-        "description": "Datos de demostración de MUSIX para Playa Virginia. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "EP de Delaossa publicado el 28 de octubre de 2022. Contiene siete pistas de rap alternativo con un tono íntimo y veraniego.",
+        "release_date": "2022-10-28",
         "format": "lp",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Siete pistas que entran solas",
+                "nickname": "MareaAlta",
+                "review_date": "2026-11-05",
+                "opinion": "Un EP breve que me gusta escuchar seguido; tiene muy buen ritmo.",
+                "rating": 5
+            },
+            {
+                "review_title": "Un sonido diferente",
+                "nickname": "CostaSur",
+                "review_date": "2026-11-06",
+                "opinion": "Me ha gustado este lado de Delaossa. La escucha se hace corta y deja con ganas de más.",
+                "rating": 4
+            },
+            {
+                "review_title": "Muy disfrutable",
+                "nickname": "AgujaDeArena",
+                "review_date": "2026-11-07",
+                "opinion": "Buen trabajo, con varias canciones que ya tengo guardadas entre mis favoritas.",
                 "rating": 4
             }
         ]
@@ -205,15 +331,29 @@
         "artist": "Placebo",
         "record_price": 95.99,
         "cover_image": "Sleeping_with_ghosts.png",
-        "description": "Datos de demostración de MUSIX para Sleeping with Ghosts. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Cuarto álbum de estudio de Placebo, publicado el 24 de marzo de 2003. La edición estándar consta de 12 pistas y forma parte de la etapa más emblemática del rock alternativo de la banda.",
+        "release_date": "2003-03-24",
         "format": "digital",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Un imprescindible de Placebo",
+                "nickname": "EcoNocturno",
+                "review_date": "2026-11-05",
+                "opinion": "Me encanta cómo combina canciones más intensas con otras de un tono más melódico.",
+                "rating": 5
+            },
+            {
+                "review_title": "Sigue sonando actual",
+                "nickname": "DiscoDeLuna",
+                "review_date": "2026-11-06",
+                "opinion": "Un álbum que no me cansa y que siempre descubro de otra manera al volver a él.",
+                "rating": 5
+            },
+            {
+                "review_title": "Muy buen disco",
+                "nickname": "AgujaGris",
+                "review_date": "2026-11-07",
+                "opinion": "Tiene grandes canciones y una atmósfera muy reconocible. De mis favoritos de la banda.",
                 "rating": 4
             }
         ]
@@ -223,16 +363,30 @@
         "artist": "Hoke",
         "record_price": 42.99,
         "cover_image": "TRES_CREUS.png",
-        "description": "Datos de demostración de MUSIX para TRES CREUS. La fecha y el formato son valores de prueba, no información discográfica verificada.",
-        "release_date": "2020-01-01",
+        "description": "Álbum de Hoke publicado el 18 de diciembre de 2024. Incluye diez pistas de hip-hop y rap con la producción característica del artista valenciano.",
+        "release_date": "2024-12-18",
         "format": "cd",
         "reviews": [
             {
-                "review_title": "Buena incorporación",
-                "nickname": "Usuario demo",
-                "review_date": "2026-11-01",
-                "opinion": "Reseña de demostración para comprobar el funcionamiento del catálogo.",
+                "review_title": "Hoke con una identidad propia",
+                "nickname": "VersoCorto",
+                "review_date": "2026-11-05",
+                "opinion": "Me gusta la personalidad del disco y lo compacto que resulta en sus diez pistas.",
+                "rating": 5
+            },
+            {
+                "review_title": "Muy buena escucha",
+                "nickname": "CalleYSurco",
+                "review_date": "2026-11-06",
+                "opinion": "Tiene un sonido cuidado y varias canciones que destacan desde la primera escucha.",
                 "rating": 4
+            },
+            {
+                "review_title": "Un álbum para repetir",
+                "nickname": "AgujaDeOro",
+                "review_date": "2026-11-07",
+                "opinion": "Me ha gustado más con cada escucha; lo recomiendo a quien siga el rap de Hoke.",
+                "rating": 5
             }
         ]
     }
