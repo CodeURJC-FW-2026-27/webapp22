@@ -1,10 +1,6 @@
-/* EDITING MAP
-   Bootstrap owns columns and standard form controls.
-   This file owns the brand, colours, cards and page-specific spacing.
-   Classes are presentation hooks, not JavaScript classes.
-*/
-
-/* 1. Header and logo */
+/*
+ * 1. HEADER AND LOGO
+ */
 .site-header {
     background: #263238;
     padding: 1rem 0;
@@ -29,7 +25,9 @@
     gap: 1rem;
 }
 
-/* The three logo pieces are decorative; no behaviour is attached to them. */
+/*
+ * THE THREE LOGO PIECES ARE DECORATIVE; NO BEHAVIOUR IS ATTACHED TO THEM.
+ */
 .record-logo {
     width: 60px;
     height: 60px;
@@ -85,7 +83,9 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* 2. Navigation */
+/*
+ * 2. NAVIGATION
+ */
 .site-nav ul {
     list-style: none;
     margin: 0;
@@ -116,7 +116,9 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* 3. Catalogue and shared buttons */
+/*
+ * 3. CATALOGUE AND SHARED BUTTONS
+ */
 .page-background {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
@@ -154,7 +156,9 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
-/* Keep this wrapper: it clips the zoom and positions the overlay. */
+/*
+ * KEEP THIS WRAPPER: IT CLIPS THE ZOOM AND POSITIONS THE OVERLAY.
+ */
 .cover-frame {
     position: relative;
     height: 250px;
@@ -193,7 +197,9 @@
     opacity: 1;
 }
 
-/* Shared appearance for action buttons and button-shaped links. */
+/*
+ * SHARED APPEARANCE FOR ACTION BUTTONS AND BUTTON-SHAPED LINKS.
+ */
 .button {
     background: #ff6b6b;
     color: white;
@@ -236,7 +242,9 @@
     text-decoration: underline;
 }
 
-/* Artist and format share the same text style. */
+/*
+ * ARTIST AND FORMAT SHARE THE SAME TEXT STYLE.
+ */
 .album-meta {
     font-size: 0.9rem;
     color: #7f8c8d;
@@ -253,8 +261,12 @@
     margin: 1rem 0;
 }
 
-/* 4. Album form */
-/* The outer panel draws the gradient border; the form is its inner surface. */
+/*
+ * 4. ALBUM FORM
+ */
+/*
+ * THE OUTER PANEL DRAWS THE GRADIENT BORDER; THE FORM IS ITS INNER SURFACE.
+ */
 .form-panel {
     display: flex;
     justify-content: center;
@@ -273,7 +285,9 @@
     width: 100%;
 }
 
-/* 5. Footer */
+/*
+ * 5. FOOTER
+ */
 .site-footer {
     background: #263238;
     position: relative;
@@ -314,7 +328,9 @@
     padding-right: 2rem;
 }
 
-/* 6. Album detail and reviews */
+/*
+ * 6. ALBUM DETAIL AND REVIEWS
+ */
 .detail-layout {
     margin-top: 2em;
     margin-bottom: 2em;
@@ -392,7 +408,9 @@
     gap: 0.5rem;
 }
 
-/* 7. Format filter: static controls until phase 2. */
+/*
+ * 7. FORMAT FILTER: STATIC CONTROLS UNTIL PHASE 2.
+ */
 .header-tools {
     display: flex;
     align-items: end;
@@ -408,7 +426,9 @@
     flex-wrap: wrap;
 }
 
-/* 8. Small screens: preserve the Bootstrap column layout. */
+/*
+ * 8. SMALL SCREENS: PRESERVE THE BOOTSTRAP COLUMN LAYOUT.
+ */
 @media (max-width: 767px) {
     .brand-name {
         font-size: 1.75rem;

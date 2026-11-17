@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Añadir álbum | MUSIX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Shared header: keep navigation and format options identical on all three pages. -->
+    <header class="site-header" id="top">
+        <div class="container-fluid">
+            <div class="row align-items-center header-row">
+                <div class="col-12 col-md-6 header-column mb-3">
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="brand-name">MUSIX</p>
+                            <p class="brand-tagline">Tu tienda de discos favorita</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 header-column">
+                    <nav aria-label="Main navigation" class="site-nav">
+                        <ul>
+                            <li>
+                                <a class="nav-link" href="index.html">Inicio</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="index.html#albums">Álbumes</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="new-element.html">Añadir álbum</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="#opening-hours">Horario</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container header-tools">
+            <div aria-label="Álbum formats" class="format-options" role="group">
+                <span>Formatos</span>
+                <button class="nav-link" type="button">LP</button>
+                <button class="nav-link" type="button">Vinilo</button>
+                <button class="nav-link" type="button">Digital</button>
+                <button class="nav-link" type="button">CD</button>
+            </div>
+        </div>
+    </header>
+    <main class="page-background">
+        <div class="container py-5">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h1 class="page-title">Añadir un nuevo álbum</h1>
+                    <p class="page-subtitle">Rellena el formulario para añadir un nuevo álbum</p>
+                </div>
+            </div>
+            <div class="form-panel">
+                <!-- Álbum fields: label for matches input id; name identifies the submitted value. -->
+                <form class="form-surface" id="album-form">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label class="form-label" for="album-title">Álbum</label>
+                            <input class="form-control" id="album-title" name="album_title" placeholder="Álbum title"
+                                required type="text">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="record-price">Precio</label>
+                            <input class="form-control" id="record-price" min="0" name="record_price"
+                                placeholder="Álbum price" required step="0.01" type="number">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="artist">Artista</label>
+                            <input class="form-control" id="artist" name="artist" placeholder="Artista name" required
+                                type="text">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label class="form-label" for="cover-image">Álbum cover</label>
+                            <input accept="image/*" class="form-control" id="cover-image" name="cover_image" required
+                                type="file">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="release-date">Fecha de lanzamiento</label>
+                            <input class="form-control" id="release-date" name="release_date" required type="date">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label class="form-label" for="description">Descripción</label>
+                            <textarea class="form-control" id="description" name="description"
+                                placeholder="Álbum description" required rows="4"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label" for="format">Formato</label>
+                            <!-- Keep these choices consistent with the shared header. -->
+                            <select class="form-select" id="format" name="format" required>
+                                <option value="lp">LP</option>
+                                <option selected value="vinyl">Vinilo</option>
+                                <option value="digital">Digital</option>
+                                <option value="cd">CD</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-between gap-2 flex-wrap">
+                            <a class="button" href="index.html">Cancelar</a>
+                            <!-- Static in phase 1; form submission belongs to phase 2. -->
+                            <button class="button" type="button">Guardar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- Shared footer: opening hours and return-to-top link. -->
+    <footer class="site-footer">
+        <div class="container-fluid">
+            <div class="row align-items-center py-4 justify-content-between">
+                <div class="col-auto mb-3 mb-md-0">
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="brand-name h4 mb-1">MUSIX</p>
+                            <p class="brand-tagline small mb-0">Tu tienda de discos favorita</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
+                    <h3 class="schedule-title h5 mb-3" id="opening-hours">Horario de apertura</h3>
+                    <div class="schedule-days">
+                        <p class="mb-1">Lunes - Viernes: 10:00 - 20:00</p>
+                        <p class="mb-1">Sábado: 09:00 - 22:00</p>
+                        <p class="mb-0">Domingo: 11:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="col-auto text-center">
+                    <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
+                        <i aria-hidden="true" class="fas fa-chevron-up me-2">
+                        </i>
+                        Volver arriba
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
