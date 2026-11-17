@@ -1,8 +1,10 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
-import { albumRules } from './validation.js';
+import { albumRules, validateAlbumFields } from './validation.js';
+
+import { receiveCover, coverExtension, saveCover, removeCover, handleCoverError } from './uploads.js';
 
 const router = express.Router();
 export default router;
@@ -88,6 +90,46 @@ router.get('/albums/:id', async (req, res) => {
 router.get('/new-element', (req, res) => {
     res.render('new-element', { rules: albumRules });
 });
+
+router.post('/albums', receiveCover, createAlbum, handleCoverError);
+
+async function createAlbum(req, res) {
+    const { album, errors } = await validateAlbumFields(req.body);
+    const extension = coverExtension(req.file);
+    if (!req.file) {
+        errors.push('La portada es obligatoria.');
+    } else if (!extension) {
+        errors.push('La portada debe ser una imagen PNG, JPEG, GIF o WebP.');
+    }
+    if (errors.length > 0) return showAlbumErrors(res, errors);
+
+    const filename = await saveCover(req.file, extension);
+    album.cover_image = filename;
+    album.reviews = [];
+    let id;
+    try {
+        id = await addAlbum(album);
+    } catch (error) {
+        await removeCover(filename);
+        if (error.code === 11000) {
+            return showAlbumErrors(res, ['Ya existe un álbum con ese título.']);
+        }
+        throw error;
+    }
+    res.status(201).render('confirmation', {
+        pageTitle: 'Álbum creado',
+        messages: ['El álbum se ha añadido al catálogo correctamente.'],
+        returnUrl: '/albums/' + id,
+        returnLabel: 'Ver álbum'
+    });
+}
+
+function showAlbumErrors(res, messages) {
+    return res.status(400).render('error', {
+        pageTitle: 'No se pudo crear el álbum', messages: messages,
+        returnUrl: '/new-element', returnLabel: 'Volver al formulario'
+    });
+}
 
 function prepareAlbumDisplay(album) {
     album.displayPrice = album.record_price.toFixed(2);

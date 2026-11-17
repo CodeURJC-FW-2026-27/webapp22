@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="form-panel">
-                <form class="form-surface" id="album-form">
+                <form class="form-surface" id="album-form" action="/albums" method="post" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <div class="col-12">
                             <label class="form-label" for="album-title">Álbum</label>
@@ -45,9 +45,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-12">
-                            <label class="form-label" for="cover-image">Álbum cover</label>
-                            <input accept="image/*" class="form-control" id="cover-image" name="cover_image" required
-                                type="file">
+                            <label class="form-label" for="cover-image">Portada</label>
+                            <input accept="image/png,image/jpeg,image/gif,image/webp" class="form-control"
+                                id="cover-image" name="cover_image" required type="file" aria-describedby="cover-help">
+                            <p id="cover-help" class="form-text">PNG, JPEG, GIF o WebP. Máximo 5 MiB.</p>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="release-date">Fecha de lanzamiento</label>
@@ -75,7 +76,7 @@
                     <div class="row">
                         <div class="col-12 d-flex justify-content-between gap-2 flex-wrap">
                             <a class="button" href="/">Cancelar</a>
-                            <button class="button" type="button">Guardar</button>
+                            <button class="button" type="submit">Guardar</button>
                         </div>
                     </div>
                 </form>

@@ -8,6 +8,7 @@ const albums = database.collection('albums');
 
 export async function connectDatabase() {
     await client.connect();
+    await albums.createIndex({ album_title: 1 }, { unique: true });
 }
 
 export async function closeDatabase() {
@@ -44,7 +45,6 @@ export async function getAlbum(id) {
 export function createAlbumFilter(title, format) {
     const filter = {};
     if (title) {
-        // Treat the search as literal text, not as a user-defined regular expression.
         let escapedTitle = '';
         const specialCharacters = '.*+?^${}()|[]\\';
         for (const character of title) {
@@ -67,4 +67,9 @@ export async function albumTitleExists(title, currentId = '') {
         filter._id = { $ne: new ObjectId(currentId) };
     }
     return await albums.findOne(filter) !== null;
+}
+
+export async function addAlbum(album) {
+    const result = await albums.insertOne(album);
+    return result.insertedId;
 }
