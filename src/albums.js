@@ -22,12 +22,12 @@ export async function insertDemoAlbums(demoAlbums) {
     await albums.insertMany(demoAlbums);
 }
 
-export async function countAlbums() {
-    return await albums.countDocuments({});
+export async function countAlbums(filter = {}) {
+    return await albums.countDocuments(filter);
 }
 
-export async function getAlbumsPage(page, pageSize) {
-    return await albums.find({})
+export async function getAlbumsPage(page, pageSize, filter = {}) {
+    return await albums.find(filter)
         .sort({ _id: 1 })
         .skip((page - 1) * pageSize)
         .limit(pageSize)
@@ -39,4 +39,24 @@ export async function getAlbum(id) {
         return null;
     }
     return await albums.findOne({ _id: new ObjectId(id) });
+}
+
+export function createAlbumFilter(title, format) {
+    const filter = {};
+    if (title) {
+        // Treat the search as literal text, not as a user-defined regular expression.
+        let escapedTitle = '';
+        const specialCharacters = '.*+?^${}()|[]\\';
+        for (const character of title) {
+            if (specialCharacters.includes(character)) {
+                escapedTitle += '\\';
+            }
+            escapedTitle += character;
+        }
+        filter.album_title = { $regex: escapedTitle, $options: 'i' };
+    }
+    if (format) {
+        filter.format = format;
+    }
+    return filter;
 }

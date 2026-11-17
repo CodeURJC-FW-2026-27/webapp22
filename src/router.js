@@ -1,12 +1,17 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage, getAlbum } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter } from './albums.js';
+
+import { catalogueUrl } from './defaultModel.js';
 
 const router = express.Router();
 export default router;
 
 router.get('/', async (req, res) => {
     const pageSize = 6;
-    const totalAlbums = await countAlbums();
+    const title = res.locals.searchTitle;
+    const format = res.locals.selectedFormat;
+    const filter = createAlbumFilter(title, format);
+    const totalAlbums = await countAlbums(filter);
     const totalPages = Math.max(1, Math.ceil(totalAlbums / pageSize));
     let currentPage = 1;
 
@@ -17,7 +22,7 @@ router.get('/', async (req, res) => {
         }
     }
 
-    const albums = await getAlbumsPage(currentPage, pageSize);
+    const albums = await getAlbumsPage(currentPage, pageSize, filter);
     for (const album of albums) {
         prepareAlbumDisplay(album);
     }
@@ -26,7 +31,7 @@ router.get('/', async (req, res) => {
     for (let number = 1; number <= totalPages; number++) {
         pages.push({
             number: number,
-            url: '/?page=' + number,
+            url: catalogueUrl(title, format, number),
             isCurrent: number === currentPage
         });
     }
@@ -36,9 +41,9 @@ router.get('/', async (req, res) => {
         pages: pages,
         showPagination: totalPages > 1,
         hasPrevious: currentPage > 1,
-        previousUrl: '/?page=' + (currentPage - 1),
+        previousUrl: catalogueUrl(title, format, currentPage - 1),
         hasNext: currentPage < totalPages,
-        nextUrl: '/?page=' + (currentPage + 1)
+        nextUrl: catalogueUrl(title, format, currentPage + 1)
     });
 });
 
