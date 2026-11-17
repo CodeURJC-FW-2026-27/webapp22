@@ -80,20 +80,20 @@ Se podrán filtrar los albumes por título (`album_title`). Además, los discos 
 4. [new-element.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/new-element.html)
 5. [README.md](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/README.md)
 
-#### Cristobal Justo Rustarazo
+#### Cristóbal Justo Rustarazo
 
-**Tareas realizadas:** [Describir las tareas realizadas]
+**Tareas realizadas:** Me encargué de crear la estructura inicial del proyecto, con los tres archivos HTML, sus metadatos y dependencias, la hoja de estilos y el README inicial. Añadí el pie de página común con el horario, el enlace para volver arriba y sus estilos. También desarrollé la página de detalle del álbum, incluyendo portada, información y botones de acción, y el formulario de creación de álbumes con sus siete campos, selector de formato y botones de guardar y cancelar.
 
 **Cinco commits más significativos:**
-1. [Mensaje del commit](URL del commit en GitHub)
-2. [Mensaje del commit](URL del commit en GitHub)
-3. [Mensaje del commit](URL del commit en GitHub)
-4. [Mensaje del commit](URL del commit en GitHub)
-5. [Mensaje del commit](URL del commit en GitHub)
+1. [album creation form](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/26c7b632e3f1a018fe2be8ac9ddcd02cadf82d78)
+2. [add shared footer](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/6bf4e4c350c8fcdc5a33a5a85a20baae2591e16f)
+3. [add search bar](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/2f07ebb468fea95cb8217e2da5f2120798ff6213)
+4. [add album detail layout](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/472a1daf49c59b6ff8cd4154734e03fdc98d1e9e)
+5. [initial project structure](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/f821e0815611637a67e728b1fb41abc5730c33ca)
 
 **Cinco ficheros con mayor participación:**
-1. [Nombre del fichero](URL del fichero en GitHub)
-2. [Nombre del fichero](URL del fichero en GitHub)
-3. [Nombre del fichero](URL del fichero en GitHub)
-4. [Nombre del fichero](URL del fichero en GitHub)
-5. [Nombre del fichero](URL del fichero en GitHub)
+1. [index.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/index.html)
+2. [detail.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/detail.html)
+3. [style.css](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/style/style.css)
+4. [new-element.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/new-element.html)
+5. [README.md](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/README.md)
