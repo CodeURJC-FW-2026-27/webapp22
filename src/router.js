@@ -1,5 +1,5 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum, addReview, updateReview } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum, addReview, updateReview, deleteReview } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
 import { albumRules, validateAlbumFields, validateReviewFields } from './validation.js';
@@ -78,6 +78,20 @@ router.get('/albums/:id', async (req, res) => {
         pageTitle: album.album_title,
         reviewForm: makeReviewForm(album._id),
         album: album
+    });
+});
+
+router.post('/albums/:id/reviews/:reviewId/delete', async (req, res) => {
+    const deleted = await deleteReview(req.params.id, req.params.reviewId);
+    if (!deleted) {
+        if (!await getAlbum(req.params.id)) return showMissingAlbum(res);
+        return showMissingReview(res, req.params.id);
+    }
+    res.render('confirmation', {
+        pageTitle: 'Reseña eliminada',
+        messages: ['La reseña se ha eliminado correctamente.'],
+        returnUrl: '/albums/' + req.params.id,
+        returnLabel: 'Volver al álbum'
     });
 });
 

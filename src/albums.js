@@ -121,3 +121,13 @@ export async function updateReview(albumId, reviewId, review) {
     );
     return result.matchedCount === 1;
 }
+
+export async function deleteReview(albumId, reviewId) {
+    if (!ObjectId.isValid(albumId) || !ObjectId.isValid(reviewId)) return false;
+    const id = new ObjectId(reviewId);
+    const result = await albums.updateOne(
+        { _id: new ObjectId(albumId), 'reviews._id': id },
+        { $pull: { reviews: { _id: id } } }
+    );
+    return result.modifiedCount === 1;
+}
