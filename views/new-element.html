@@ -21,20 +21,21 @@
                 </div>
             </div>
             <div class="form-panel">
-                <!-- Album fields: label for matches input id; name identifies the submitted value. -->
                 <form class="form-surface" id="album-form">
                     <div class="row mb-3">
                         <div class="col-12">
                             <label class="form-label" for="album-title">Álbum</label>
                             <input class="form-control" id="album-title" name="album_title" placeholder="Álbum title"
-                                required type="text">
+                                required pattern="{{rules.titlePattern}}"
+                                title="Empieza el título con una letra mayúscula." type="text">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-12 col-md-6">
                             <label class="form-label" for="record-price">Precio</label>
-                            <input class="form-control" id="record-price" min="0" name="record_price"
-                                placeholder="Álbum price" required step="0.01" type="number">
+                            <input class="form-control" id="record-price" min="{{rules.priceMin}}"
+                                max="{{rules.priceMax}}" name="record_price" placeholder="Álbum price" required
+                                step="0.01" type="number">
                         </div>
                         <div class="col-12 col-md-6">
                             <label class="form-label" for="artist">Artista</label>
@@ -50,18 +51,19 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="release-date">Fecha de lanzamiento</label>
-                            <input class="form-control" id="release-date" name="release_date" required type="date">
+                            <input class="form-control" id="release-date" name="release_date" min="0001-01-01"
+                                max="9999-12-31" required type="date">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-12">
                             <label class="form-label" for="description">Descripción</label>
                             <textarea class="form-control" id="description" name="description"
-                                placeholder="Álbum description" required rows="4"></textarea>
+                                placeholder="Descripción del álbum" minlength="{{rules.descriptionMin}}"
+                                maxlength="{{rules.descriptionMax}}" required rows="4"></textarea>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="format">Formato</label>
-                            <!-- Keep these choices consistent with the shared header. -->
                             <select class="form-select" id="format" name="format" required>
                                 <option value="lp">LP</option>
                                 <option selected value="vinyl">Vinilo</option>
@@ -73,7 +75,6 @@
                     <div class="row">
                         <div class="col-12 d-flex justify-content-between gap-2 flex-wrap">
                             <a class="button" href="/">Cancelar</a>
-                            <!-- Static in phase 1; form submission belongs to phase 2. -->
                             <button class="button" type="button">Guardar</button>
                         </div>
                     </div>

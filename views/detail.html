@@ -28,14 +28,12 @@
                         <div class="album-meta">Artista: {{artist}}</div>
                         <div class="album-meta">Formato: {{displayFormat}}</div>
                         <p class="release-date">Fecha de lanzamiento: {{displayReleaseDate}}</p>
-                        <!-- Editing and deletion will be implemented in later commits. -->
                         <div class="album-actions">
                             <button class="button" type="button">Borrar</button>
                             <button class="button" type="button">Editar</button>
                             <a class="button" href="/">Volver a la página principal</a>
                         </div>
                     </div>
-                    <!-- Review fields: label for matches input id; name identifies the submitted value. -->
                     <form id="review-form">
                         <h2 class="h5">¡Deja tu reseña!</h2>
                         <div class="mb-3">
@@ -110,13 +108,6 @@
                 </div>
                 {{/reviews}}
             </div>
-        </div>
-        {{/album}}
-        {{^album}}
-        <div class="container py-5 text-center">
-            <h1 class="page-title">Álbum no encontrado</h1>
-            <p>El identificador no es válido o el álbum ya no existe.</p>
-            <a class="button" href="/">Volver al catálogo</a>
         </div>
         {{/album}}
     </main>

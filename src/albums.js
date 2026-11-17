@@ -60,3 +60,11 @@ export function createAlbumFilter(title, format) {
     }
     return filter;
 }
+
+export async function albumTitleExists(title, currentId = '') {
+    const filter = { album_title: title };
+    if (currentId) {
+        filter._id = { $ne: new ObjectId(currentId) };
+    }
+    return await albums.findOne(filter) !== null;
+}

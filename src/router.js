@@ -2,6 +2,7 @@ import express from 'express';
 import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
+import { albumRules } from './validation.js';
 
 const router = express.Router();
 export default router;
@@ -55,8 +56,11 @@ router.get('/albums/:id', async (req, res) => {
     const album = await getAlbum(req.params.id);
 
     if (!album) {
-        res.status(404).render('detail', {
-            pageTitle: 'Álbum no encontrado'
+        res.status(404).render('error', {
+            pageTitle: 'Álbum no encontrado',
+            messages: ['El identificador no es válido o el álbum ya no existe.'],
+            returnUrl: '/',
+            returnLabel: 'Volver al catálogo'
         });
         return;
     }
@@ -82,7 +86,7 @@ router.get('/albums/:id', async (req, res) => {
 });
 
 router.get('/new-element', (req, res) => {
-    res.render('new-element');
+    res.render('new-element', { rules: albumRules });
 });
 
 function prepareAlbumDisplay(album) {
@@ -94,3 +98,25 @@ function formatDate(date) {
     const parts = date.split('-');
     return parts[2] + '/' + parts[1] + '/' + parts[0];
 }
+
+router.use((req, res) => {
+    res.status(404).render('error', {
+        pageTitle: 'Página no encontrada',
+        messages: ['La página solicitada no existe.'],
+        returnUrl: '/',
+        returnLabel: 'Volver al catálogo'
+    });
+});
+
+router.use((error, req, res, next) => {
+    if (res.headersSent) {
+        return next(error);
+    }
+    console.error(error);
+    res.status(500).render('error', {
+        pageTitle: 'No se pudo completar la operación',
+        messages: ['Se ha producido un error en el servidor. Inténtalo de nuevo.'],
+        returnUrl: '/',
+        returnLabel: 'Volver al catálogo'
+    });
+});
