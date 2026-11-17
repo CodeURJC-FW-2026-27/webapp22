@@ -8,27 +8,29 @@ export const UPLOADS_FOLDER = './uploads';
 const DEMO_IMAGES_FOLDER = './data/images';
 
 export async function copyDemoImages(demoAlbums) {
-    for (const album of demoAlbums) {
-        await access(path.join(DEMO_IMAGES_FOLDER, album.cover_image), constants.R_OK);
-    }
-
     await mkdir(UPLOADS_FOLDER, { recursive: true });
-
+    const missing = [];
     for (const album of demoAlbums) {
-        const source = path.join(DEMO_IMAGES_FOLDER, album.cover_image);
-        const destination = path.join(UPLOADS_FOLDER, album.cover_image);
-
+        const filename = album.cover_image;
+        if (path.basename(filename) !== filename) throw new Error('Invalid cover filename');
+        const source = path.join(DEMO_IMAGES_FOLDER, filename);
+        const destination = path.join(UPLOADS_FOLDER, filename);
         try {
-            // Existing files must not be overwritten on restart.
-            await copyFile(source, destination, constants.COPYFILE_EXCL);
+            await access(destination, constants.R_OK);
         } catch (error) {
-            if (error.code !== 'EEXIST') {
-                throw error;
-            }
+            if (error.code !== 'ENOENT') throw error;
+            await access(source, constants.R_OK);
+            missing.push({ source: source, destination: destination });
+        }
+    }
+    for (const file of missing) {
+        try {
+            await copyFile(file.source, file.destination, constants.COPYFILE_EXCL);
+        } catch (error) {
+            if (error.code !== 'EEXIST') throw error;
         }
     }
 }
-
 
 export const receiveCover = multer({
     storage: multer.memoryStorage(),

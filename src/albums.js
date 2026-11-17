@@ -131,3 +131,20 @@ export async function deleteReview(albumId, reviewId) {
     );
     return result.modifiedCount === 1;
 }
+
+export async function isDemoInitialized() {
+    return await database.collection('appState').findOne({ _id: 'demoCatalogue' }) !== null;
+}
+
+export async function markDemoInitialized() {
+    await database.collection('appState').updateOne(
+        { _id: 'demoCatalogue' },
+        { $set: { initialized: true } },
+        { upsert: true }
+    );
+}
+
+export async function getAlbumCoverNames() {
+    const documents = await albums.find({}, { projection: { cover_image: 1 } }).toArray();
+    return documents.map(album => album.cover_image);
+}
