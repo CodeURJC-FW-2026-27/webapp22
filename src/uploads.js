@@ -29,6 +29,7 @@ export async function copyDemoImages(demoAlbums) {
     }
 }
 
+
 export const receiveCover = multer({
     storage: multer.memoryStorage(),
     limits: { fileSize: 5 * 1024 * 1024, files: 1, fields: 7, parts: 8 }
@@ -67,7 +68,8 @@ export function handleCoverError(error, req, res, next) {
         ? 'La portada no puede superar los 5 MiB.'
         : 'Envía una sola portada y los siete campos del formulario.';
     res.status(400).render('error', {
-        pageTitle: 'No se pudo crear el álbum', messages: [message],
-        returnUrl: '/new-element', returnLabel: 'Volver al formulario'
+        pageTitle: 'No se pudo guardar el álbum', messages: [message],
+        returnUrl: req.params.id ? '/albums/' + encodeURIComponent(req.params.id) + '/edit' : '/new-element',
+        returnLabel: 'Volver al formulario'
     });
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Añadir álbum | MUSIX</title>
+    <title>{{pageTitle}} | MUSIX</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="/styles/style.css" rel="stylesheet">
@@ -16,44 +16,54 @@
         <div class="container py-5">
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h1 class="page-title">Añadir un nuevo álbum</h1>
-                    <p class="page-subtitle">Rellena el formulario para añadir un nuevo álbum</p>
+                    <h1 class="page-title">{{pageTitle}}</h1>
+                    <p class="page-subtitle">{{#isEditing}}Modifica los datos del
+                        álbum{{/isEditing}}{{^isEditing}}Rellena el formulario para añadir un nuevo álbum{{/isEditing}}
+                    </p>
                 </div>
             </div>
             <div class="form-panel">
-                <form class="form-surface" id="album-form" action="/albums" method="post" enctype="multipart/form-data">
+                <form class="form-surface" id="album-form" action="{{formAction}}" method="post"
+                    enctype="multipart/form-data">
                     <div class="row mb-3">
                         <div class="col-12">
                             <label class="form-label" for="album-title">Álbum</label>
-                            <input class="form-control" id="album-title" name="album_title" placeholder="Álbum title"
-                                required pattern="{{rules.titlePattern}}"
-                                title="Empieza el título con una letra mayúscula." type="text">
+                            <input class="form-control" id="album-title" name="album_title"
+                                value="{{album.album_title}}" placeholder="Álbum title" required
+                                pattern="{{rules.titlePattern}}" title="Empieza el título con una letra mayúscula."
+                                type="text">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-12 col-md-6">
                             <label class="form-label" for="record-price">Precio</label>
                             <input class="form-control" id="record-price" min="{{rules.priceMin}}"
-                                max="{{rules.priceMax}}" name="record_price" placeholder="Álbum price" required
-                                step="0.01" type="number">
+                                max="{{rules.priceMax}}" name="record_price" value="{{album.record_price}}"
+                                placeholder="Álbum price" required step="0.01" type="number">
                         </div>
                         <div class="col-12 col-md-6">
                             <label class="form-label" for="artist">Artista</label>
-                            <input class="form-control" id="artist" name="artist" placeholder="Artista name" required
-                                type="text">
+                            <input class="form-control" id="artist" name="artist" value="{{album.artist}}"
+                                placeholder="Artista name" required type="text">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-12">
                             <label class="form-label" for="cover-image">Portada</label>
                             <input accept="image/png,image/jpeg,image/gif,image/webp" class="form-control"
-                                id="cover-image" name="cover_image" required type="file" aria-describedby="cover-help">
-                            <p id="cover-help" class="form-text">PNG, JPEG, GIF o WebP. Máximo 5 MiB.</p>
+                                id="cover-image" name="cover_image" {{^isEditing}}required{{/isEditing}} type="file"
+                                aria-describedby="cover-help">
+                            <p id="cover-help" class="form-text">PNG, JPEG, GIF o WebP. Máximo 5 MiB. {{#isEditing}}Deja
+                                este campo vacío para conservar la portada actual.{{/isEditing}}</p>
+                            {{#isEditing}}
+                            <img src="{{currentCoverUrl}}" alt="Portada actual de {{album.album_title}}"
+                                class="img-thumbnail mb-3" width="160">
+                            {{/isEditing}}
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="release-date">Fecha de lanzamiento</label>
-                            <input class="form-control" id="release-date" name="release_date" min="0001-01-01"
-                                max="9999-12-31" required type="date">
+                            <input class="form-control" id="release-date" name="release_date"
+                                value="{{album.release_date}}" min="0001-01-01" max="9999-12-31" required type="date">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -61,21 +71,20 @@
                             <label class="form-label" for="description">Descripción</label>
                             <textarea class="form-control" id="description" name="description"
                                 placeholder="Descripción del álbum" minlength="{{rules.descriptionMin}}"
-                                maxlength="{{rules.descriptionMax}}" required rows="4"></textarea>
+                                maxlength="{{rules.descriptionMax}}" required rows="4">{{album.description}}</textarea>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="format">Formato</label>
                             <select class="form-select" id="format" name="format" required>
-                                <option value="lp">LP</option>
-                                <option selected value="vinyl">Vinilo</option>
-                                <option value="digital">Digital</option>
-                                <option value="cd">CD</option>
+                                {{#albumFormats}}
+                                <option value="{{value}}" {{#isSelected}}selected{{/isSelected}}>{{label}}</option>
+                                {{/albumFormats}}
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 d-flex justify-content-between gap-2 flex-wrap">
-                            <a class="button" href="/">Cancelar</a>
+                            <a class="button" href="{{cancelUrl}}">Cancelar</a>
                             <button class="button" type="submit">Guardar</button>
                         </div>
                     </div>

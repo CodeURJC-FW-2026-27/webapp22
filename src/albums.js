@@ -73,3 +73,11 @@ export async function addAlbum(album) {
     const result = await albums.insertOne(album);
     return result.insertedId;
 }
+
+export async function updateAlbum(id, album, previousCover) {
+    const result = await albums.updateOne(
+        { _id: new ObjectId(id), cover_image: previousCover },
+        { $set: album }
+    );
+    return result.matchedCount === 1;
+}

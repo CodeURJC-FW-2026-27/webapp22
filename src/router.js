@@ -1,5 +1,5 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
 import { albumRules, validateAlbumFields } from './validation.js';
@@ -57,15 +57,7 @@ router.get('/detail', (req, res) => {
 router.get('/albums/:id', async (req, res) => {
     const album = await getAlbum(req.params.id);
 
-    if (!album) {
-        res.status(404).render('error', {
-            pageTitle: 'Álbum no encontrado',
-            messages: ['El identificador no es válido o el álbum ya no existe.'],
-            returnUrl: '/',
-            returnLabel: 'Volver al catálogo'
-        });
-        return;
-    }
+    if (!album) return showMissingAlbum(res);
 
     prepareAlbumDisplay(album);
     const formatLabels = {
@@ -88,46 +80,104 @@ router.get('/albums/:id', async (req, res) => {
 });
 
 router.get('/new-element', (req, res) => {
-    res.render('new-element', { rules: albumRules });
+    showAlbumForm(res);
 });
 
-router.post('/albums', receiveCover, createAlbum, handleCoverError);
+router.get('/albums/:id/edit', async (req, res) => {
+    const album = await getAlbum(req.params.id);
+    if (!album) return showMissingAlbum(res);
+    showAlbumForm(res, album);
+});
 
-async function createAlbum(req, res) {
-    const { album, errors } = await validateAlbumFields(req.body);
+function showAlbumForm(res, album = { format: 'vinyl' }) {
+    const isEditing = Boolean(album._id);
+    const albumFormats = [
+        { value: 'lp', label: 'LP' },
+        { value: 'vinyl', label: 'Vinilo' },
+        { value: 'digital', label: 'Digital' },
+        { value: 'cd', label: 'CD' }
+    ];
+    for (const format of albumFormats) format.isSelected = format.value === album.format;
+    res.render('new-element', {
+        rules: albumRules, album: album, albumFormats: albumFormats,
+        isEditing: isEditing,
+        pageTitle: isEditing ? 'Editar álbum' : 'Añadir un nuevo álbum',
+        formAction: isEditing ? '/albums/' + album._id + '/edit' : '/albums',
+        cancelUrl: isEditing ? '/albums/' + album._id : '/',
+        currentCoverUrl: isEditing ? '/uploads/' + encodeURIComponent(album.cover_image) : ''
+    });
+}
+
+router.post('/albums', receiveCover, saveAlbum, handleCoverError);
+router.post('/albums/:id/edit', receiveCover, saveAlbum, handleCoverError);
+
+async function saveAlbum(req, res) {
+    const isEditing = Boolean(req.params.id);
+    const previousAlbum = isEditing ? await getAlbum(req.params.id) : null;
+    if (isEditing && !previousAlbum) return showMissingAlbum(res);
+    const { album, errors } = await validateAlbumFields(req.body, isEditing ? req.params.id : '');
     const extension = coverExtension(req.file);
-    if (!req.file) {
+    if (!req.file && !isEditing) {
         errors.push('La portada es obligatoria.');
-    } else if (!extension) {
+    } else if (req.file && !extension) {
         errors.push('La portada debe ser una imagen PNG, JPEG, GIF o WebP.');
     }
-    if (errors.length > 0) return showAlbumErrors(res, errors);
+    if (errors.length > 0) return showAlbumErrors(req, res, errors);
 
-    const filename = await saveCover(req.file, extension);
-    album.cover_image = filename;
-    album.reviews = [];
-    let id;
+    const filename = req.file ? await saveCover(req.file, extension) : '';
+    if (filename) album.cover_image = filename;
+    let id = req.params.id;
+    let updated = true;
     try {
-        id = await addAlbum(album);
+        if (isEditing) {
+            updated = await updateAlbum(id, album, previousAlbum.cover_image);
+        } else {
+            album.reviews = [];
+            id = await addAlbum(album);
+        }
     } catch (error) {
-        await removeCover(filename);
+        if (filename) await removeCover(filename);
         if (error.code === 11000) {
-            return showAlbumErrors(res, ['Ya existe un álbum con ese título.']);
+            return showAlbumErrors(req, res, ['Ya existe un álbum con ese título.']);
         }
         throw error;
     }
-    res.status(201).render('confirmation', {
-        pageTitle: 'Álbum creado',
-        messages: ['El álbum se ha añadido al catálogo correctamente.'],
+    if (!updated) {
+        if (filename) await removeCover(filename);
+        return showAlbumErrors(req, res, ['El álbum ha cambiado o ya no existe. Vuelve a abrir el formulario.'], 409);
+    }
+    const messages = [isEditing
+        ? 'Los cambios del álbum se han guardado correctamente.'
+        : 'El álbum se ha añadido al catálogo correctamente.'];
+    if (isEditing && filename) {
+        try {
+            await removeCover(previousAlbum.cover_image);
+        } catch (error) {
+            console.error(error);
+            messages.push('La portada nueva está guardada, pero no se pudo eliminar el archivo anterior.');
+        }
+    }
+    res.status(isEditing ? 200 : 201).render('confirmation', {
+        pageTitle: isEditing ? 'Álbum actualizado' : 'Álbum creado',
+        messages: messages,
         returnUrl: '/albums/' + id,
         returnLabel: 'Ver álbum'
     });
 }
 
-function showAlbumErrors(res, messages) {
-    return res.status(400).render('error', {
-        pageTitle: 'No se pudo crear el álbum', messages: messages,
-        returnUrl: '/new-element', returnLabel: 'Volver al formulario'
+function showAlbumErrors(req, res, messages, status = 400) {
+    return res.status(status).render('error', {
+        pageTitle: 'No se pudo guardar el álbum', messages: messages,
+        returnUrl: req.params.id ? '/albums/' + encodeURIComponent(req.params.id) + '/edit' : '/new-element',
+        returnLabel: 'Volver al formulario'
+    });
+}
+
+function showMissingAlbum(res) {
+    return res.status(404).render('error', {
+        pageTitle: 'Álbum no encontrado',
+        messages: ['El identificador no es válido o el álbum ya no existe.'],
+        returnUrl: '/', returnLabel: 'Volver al catálogo'
     });
 }
 
