@@ -91,3 +91,13 @@ export async function deleteAlbum(id) {
         { includeResultMetadata: false }
     );
 }
+
+export async function addReview(albumId, review) {
+    if (!ObjectId.isValid(albumId)) return false;
+    review._id = new ObjectId();
+    const result = await albums.updateOne(
+        { _id: new ObjectId(albumId), 'reviews.review_title': { $ne: review.review_title } },
+        { $push: { reviews: review } }
+    );
+    return result.modifiedCount === 1;
+}

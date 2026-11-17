@@ -65,3 +65,28 @@ export async function validateAlbumFields(body = {}, currentId = '') {
 
     return { album: album, errors: errors };
 }
+
+export function validateReviewFields(body = {}, reviews = []) {
+    if (!body || typeof body !== 'object') body = {};
+    const review = {
+        review_title: readText(body.review_title),
+        nickname: readText(body.nickname),
+        review_date: readText(body.review_date),
+        opinion: readText(body.opinion)
+    };
+    const errors = [];
+    const rating = readText(body.rating);
+    review.rating = Number(rating);
+
+    if (!review.review_title) {
+        errors.push('El título de la reseña es obligatorio.');
+    } else if (reviews.some(existing => existing.review_title === review.review_title)) {
+        errors.push('Ya existe una reseña con ese título en este álbum.');
+    }
+    if (!review.nickname) errors.push('El nombre es obligatorio.');
+    if (!isValidDate(review.review_date)) errors.push('La fecha de la reseña debe ser válida.');
+    if (!review.opinion) errors.push('La opinión es obligatoria.');
+    if (!/^[1-5]$/.test(rating)) errors.push('La valoración debe ser un número entero entre 1 y 5.');
+
+    return { review: review, errors: errors };
+}

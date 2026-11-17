@@ -1,8 +1,8 @@
 import express from 'express';
-import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum } from './albums.js';
+import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum, addReview } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
-import { albumRules, validateAlbumFields } from './validation.js';
+import { albumRules, validateAlbumFields, validateReviewFields } from './validation.js';
 
 import { receiveCover, coverExtension, saveCover, removeCover, handleCoverError } from './uploads.js';
 
@@ -78,6 +78,35 @@ router.get('/albums/:id', async (req, res) => {
         album: album
     });
 });
+
+router.post('/albums/:id/reviews', async (req, res) => {
+    const album = await getAlbum(req.params.id);
+    if (!album) return showMissingAlbum(res);
+
+    const { review, errors } = validateReviewFields(req.body, album.reviews);
+    if (errors.length > 0) return showReviewErrors(res, req.params.id, errors);
+
+    const added = await addReview(req.params.id, review);
+    if (!added) {
+        if (!await getAlbum(req.params.id)) return showMissingAlbum(res);
+        return showReviewErrors(res, req.params.id, ['Ya existe una reseña con ese título en este álbum.']);
+    }
+    res.status(201).render('confirmation', {
+        pageTitle: 'Reseña creada',
+        messages: ['La reseña se ha añadido al álbum correctamente.'],
+        returnUrl: '/albums/' + req.params.id,
+        returnLabel: 'Volver al álbum'
+    });
+});
+
+function showReviewErrors(res, albumId, messages) {
+    return res.status(400).render('error', {
+        pageTitle: 'No se pudo guardar la reseña',
+        messages: messages,
+        returnUrl: '/albums/' + albumId + '#review-form',
+        returnLabel: 'Volver al formulario'
+    });
+}
 
 router.post('/albums/:id/delete', async (req, res) => {
     const album = await deleteAlbum(req.params.id);
