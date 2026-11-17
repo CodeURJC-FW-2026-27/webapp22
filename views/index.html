@@ -23,224 +23,70 @@
             <div class="d-flex justify-content-end mb-4">
                 <a class="button" href="/new-element">Crear nuevo elemento</a>
             </div>
-            <!-- Catalogue: copy one complete Bootstrap column to add an album. -->
             <div class="row" id="album-list">
-                <!-- One album: cover, detail link, title, artist and price. -->
+                {{#albums}}
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <article class="album-card">
                         <div class="cover-frame">
-                            <img alt="Av. Rafaela Ybarra album cover" src="/images/Av._Rafaela_Ybarra.png">
+                            <img alt="Portada de {{album_title}}" src="{{coverUrl}}">
                             <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Av. Rafaela Ybarra" class="button" href="/detail">Ver
-                                    detalles</a>
+                                <a aria-label="Ver detalles: {{album_title}}" class="button" href="/detail">Ver detalles</a>
                             </div>
                         </div>
                         <div class="album-info">
                             <h3 class="album-title">
-                                <a href="/detail">Av. Rafaela Ybarra</a>
+                                <a href="/detail">{{album_title}}</a>
                             </h3>
-                            <div class="album-meta">Ill Pekeño</div>
-                            <div class="price">€45.99</div>
+                            <div class="album-meta">{{artist}}</div>
+                            <div class="price">€{{displayPrice}}</div>
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="BBO album cover" src="/images/BBO.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: BBO" class="button" href="/detail">Ver detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">BBO</a>
-                            </h3>
-                            <div class="album-meta">Hoke</div>
-                            <div class="price">€89.99</div>
-                        </div>
-                    </article>
+                {{/albums}}
+                {{^albums}}
+                <div class="col-12">
+                    <p class="text-center">No hay álbumes disponibles.</p>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Efugio album cover" src="/images/Efugio.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Efugio" class="button" href="/detail">Ver detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">Efugio</a>
-                            </h3>
-                            <div class="album-meta">Jaloner</div>
-                            <div class="price">€32.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="La Madrugá album cover" src="/images/La_Madrugá.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: La Madrugá" class="button" href="/detail">Ver
-                                    detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">La Madrugá</a>
-                            </h3>
-                            <div class="album-meta">Delaossa</div>
-                            <div class="price">€67.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Maracucho Bueno Muere Chiquito album cover"
-                                src="/images/Maracucho_Bueno_Muere_Chiquito.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Maracucho Bueno Muere Chiquito" class="button"
-                                    href="/detail">Ver detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">Maracucho Bueno Muere Chiquito</a>
-                            </h3>
-                            <div class="album-meta">Cruz Cafuné</div>
-                            <div class="price">€55.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Meds album cover" src="/images/Meds.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Meds" class="button" href="/detail">Ver detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">Meds</a>
-                            </h3>
-                            <div class="album-meta">Placebo</div>
-                            <div class="price">€12.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Moonlight922 album cover" src="/images/Moonlight922.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Moonlight922" class="button" href="/detail">Ver
-                                    detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">Moonlight922</a>
-                            </h3>
-                            <div class="album-meta">Cruz Cafuné</div>
-                            <div class="price">€78.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="P.E.K.E. album cover" src="/images/P.E.K.E..png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: P.E.K.E." class="button" href="/detail">Ver
-                                    detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">P.E.K.E.</a>
-                            </h3>
-                            <div class="album-meta">Ill Pekeño</div>
-                            <div class="price">€69.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Pangea, la grieta album cover" src="/images/Pangea_la_grieta.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Pangea, la grieta" class="button" href="/detail">Ver
-                                    detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">Pangea, la grieta</a>
-                            </h3>
-                            <div class="album-meta">Jaloner</div>
-                            <div class="price">€35.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Playa Virginia album cover" src="/images/Playa_Virginia.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Playa Virginia" class="button" href="/detail">Ver
-                                    detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">Playa Virginia</a>
-                            </h3>
-                            <div class="album-meta">Delaossa</div>
-                            <div class="price">€52.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Sleeping with Ghosts album cover" src="/images/Sleeping_with_ghosts.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: Sleeping with Ghosts" class="button" href="/detail">Ver
-                                    detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">Sleeping with Ghosts</a>
-                            </h3>
-                            <div class="album-meta">Placebo</div>
-                            <div class="price">€95.99</div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <article class="album-card">
-                        <div class="cover-frame">
-                            <img alt="Tres Creus album cover" src="/images/TRES_CREUS.png">
-                            <div class="cover-overlay">
-                                <a aria-label="Ver detalles: TRES CREUS" class="button" href="/detail">Ver
-                                    detalles</a>
-                            </div>
-                        </div>
-                        <div class="album-info">
-                            <h3 class="album-title">
-                                <a href="/detail">TRES CREUS</a>
-                            </h3>
-                            <div class="album-meta">Hoke</div>
-                            <div class="price">€42.99</div>
-                        </div>
-                    </article>
-                </div>
+                {{/albums}}
             </div>
+            {{#showPagination}}
+            <nav aria-label="Páginas del catálogo">
+                <ul class="pagination justify-content-center flex-wrap">
+                    {{#hasPrevious}}
+                    <li class="page-item">
+                        <a class="page-link" href="{{previousUrl}}">Anterior</a>
+                    </li>
+                    {{/hasPrevious}}
+                    {{^hasPrevious}}
+                    <li class="page-item disabled">
+                        <span class="page-link">Anterior</span>
+                    </li>
+                    {{/hasPrevious}}
+                    {{#pages}}
+                    {{#isCurrent}}
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">{{number}}</span>
+                    </li>
+                    {{/isCurrent}}
+                    {{^isCurrent}}
+                    <li class="page-item">
+                        <a class="page-link" href="{{url}}">{{number}}</a>
+                    </li>
+                    {{/isCurrent}}
+                    {{/pages}}
+                    {{#hasNext}}
+                    <li class="page-item">
+                        <a class="page-link" href="{{nextUrl}}">Siguiente</a>
+                    </li>
+                    {{/hasNext}}
+                    {{^hasNext}}
+                    <li class="page-item disabled">
+                        <span class="page-link">Siguiente</span>
+                    </li>
+                    {{/hasNext}}
+                </ul>
+            </nav>
+            {{/showPagination}}
         </div>
     </main>
     {{>footer}}

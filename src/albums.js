@@ -21,3 +21,15 @@ export async function isCatalogueEmpty() {
 export async function insertDemoAlbums(demoAlbums) {
     await albums.insertMany(demoAlbums);
 }
+
+export async function countAlbums() {
+    return await albums.countDocuments({});
+}
+
+export async function getAlbumsPage(page, pageSize) {
+    return await albums.find({})
+        .sort({ _id: 1 })
+        .skip((page - 1) * pageSize)
+        .limit(pageSize)
+        .toArray();
+}
