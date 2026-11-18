@@ -183,21 +183,21 @@ npm run watch
 
 #### David Esteban Bernardo
 
-**Tareas realizadas:** [describir las tareas realizadas]
+**Tareas realizadas:** Me encargué  de mostrar el catálogo y los detalles de los álbumes, crear y editar álbumes y gestionar sus reseñas. He implementado formularios y validaciones para estas operaciones, además manejo de errores para álbumes y páginas no encontradas.
 
 **Cinco commits más significativos:**
-1. [mensaje del commit](URL)
-2. [mensaje del commit](URL)
-3. [mensaje del commit](URL)
-4. [mensaje del commit](URL)
-5. [mensaje del commit](URL)
+1. [Add album creation functionalities done](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/9434d57e089492d9ad220cc3763ff7e163857d39)
+2. [update album from detail page](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/01ad96bb8cc00d78fcba626e14016b468afb5368)
+3. [server validation on album reviews](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/1f11087ea3a95b5b89e9a41e8c85020852f0542c)
+4. [edit reviews form with validations](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/4147b5984f033bf8aeaf1a41d6d6b723793901f7)
+5. [date validation](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/4f770bcf7ee1fb53192e8e2f97ba6b0dff815174)
 
 **Cinco ficheros con mayor participación:**
-1. [fichero]
-2. [fichero]
-3. [fichero]
-4. [fichero]
-5. [fichero]
+1. [src/albums.js](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/src/albums.js)
+2. [src/router.js](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/src/router.js)
+3. [views/detail.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/views/detail.html)
+4. [views/new-element.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/views/new-element.html)
+5. [src/validation.js](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/src/validation.js)
 
 #### Cristóbal Justo Rustarazo
 
