@@ -179,6 +179,8 @@ npm run watch
 
 ### Vídeo demostrativo
 
+[Vídeo demostrativo en YouTube](https://youtu.be/CnWHOmE6ZDE)
+
 ### Participación de miembros
 
 #### David Esteban Bernardo
