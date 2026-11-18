@@ -201,18 +201,18 @@ npm run watch
 
 #### Cristóbal Justo Rustarazo
 
-**Tareas realizadas:** [describir las tareas realizadas]
+**Tareas realizadas:** Desarrollé la conexión con MongoDB, las consultas y la paginación del catálogo, el buscador y los filtros por formato. Implementé la eliminación de álbumes y reseñas y la persistencia del catálogo entre reinicios. También colaboré en la normalización de los datos y la mejora de los mensajes de error.
 
 **Cinco commits más significativos:**
-1. [mensaje del commit](URL)
-2. [mensaje del commit](URL)
-3. [mensaje del commit](URL)
-4. [mensaje del commit](URL)
-5. [mensaje del commit](URL)
+1. [mongoDB catalogue and pagination](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/6c42db43100db9a52609cee569e2f549cad03236)
+2. [add searchbar and filter functions](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/ab5e075846f6b5df5b7a183b67ecf7a13157c2ee)
+3. [add delete album function](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/a3451d994436819dd0ea02f7f514605b1a7c3800)
+4. [add delete review function](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/f81766889017839e2390437a21318a308b354599)
+5. [addpreserve catalog between restarts](https://github.com/CodeURJC-FW-2026-27/webapp22/commit/567f0924823b75cb2375fa9785e386a607968eb0)
 
 **Cinco ficheros con mayor participación:**
-1. [fichero]
-2. [fichero]
-3. [fichero]
-4. [fichero]
-5. [fichero]
+1. [src/albums.js](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/src/albums.js)
+2. [src/router.js](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/src/router.js)
+3. [views/index.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/views/index.html)
+4. [src/seed.js](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/src/seed.js)
+5. [views/detail.html](https://github.com/CodeURJC-FW-2026-27/webapp22/blob/main/views/detail.html)

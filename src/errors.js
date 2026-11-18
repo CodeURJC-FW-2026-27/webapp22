@@ -1,4 +1,17 @@
-// Log technical details and show a safe message on the shared error page.
+let lastError = null;
+
+// Store error details in memory and redirect cleanly to /error without query params.
+export function redirectToError(res, errorData) {
+    lastError = errorData;
+    return res.redirect('/error');
+}
+
+// Retrieve the most recent error details for the /error route.
+export function getLastError() {
+    return lastError;
+}
+
+// Log technical details and redirect to the shared error page.
 export function handleError(error, req, res, next) {
     // Let Express finish handling failures if the response has already started.
     if (res.headersSent) return next(error);
@@ -7,8 +20,10 @@ export function handleError(error, req, res, next) {
     let message = 'Se ha producido un error en el servidor. Inténtalo de nuevo.';
     if (status === 400) message = 'Los datos enviados no tienen un formato válido.';
     if (status === 413) message = 'Los datos enviados superan el tamaño permitido.';
-    res.status(status).render('error', {
+    redirectToError(res, {
         pageTitle: 'No se pudo completar la operación',
-        messages: [message], returnUrl: '/', returnLabel: 'Volver al catálogo'
+        messages: [message],
+        returnUrl: '/',
+        returnLabel: 'Volver al catálogo'
     });
 }

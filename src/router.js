@@ -6,10 +6,22 @@ import { catalogueUrl } from './defaultModel.js';
 import { albumRules, dateRules, validateAlbumFields, validateReviewFields } from './validation.js';
 
 import { receiveCover, coverExtension, saveCover, removeCover, handleCoverError } from './uploads.js';
+import { redirectToError, getLastError } from './errors.js';
 
 // Group catalogue, album and review endpoints in one Express router.
 const router = express.Router();
 export default router;
+
+// Render the shared error view at /error with clean URL.
+router.get('/error', (req, res) => {
+    const errorData = getLastError() || {
+        pageTitle: 'Error',
+        messages: ['Ha ocurrido un error inesperado.'],
+        returnUrl: '/',
+        returnLabel: 'Volver al catálogo'
+    };
+    res.render('error', errorData);
+});
 
 // List albums with combined filters and six results per page.
 router.get('/', async (req, res) => {
@@ -168,7 +180,7 @@ async function saveReview(req, res) {
 
 // Return validation errors with a link to the relevant review form.
 function showReviewErrors(req, res, messages) {
-    return res.status(400).render('error', {
+    return redirectToError(res, {
         pageTitle: 'No se pudo guardar la reseña',
         messages: messages,
         returnUrl: '/albums/' + req.params.id + (req.params.reviewId
@@ -179,7 +191,7 @@ function showReviewErrors(req, res, messages) {
 
 // Show a 404 when the review is not part of this album.
 function showMissingReview(res, albumId) {
-    return res.status(404).render('error', {
+    return redirectToError(res, {
         pageTitle: 'Reseña no encontrada',
         messages: ['La reseña no existe en este álbum.'],
         returnUrl: '/albums/' + albumId,
@@ -303,8 +315,9 @@ async function saveAlbum(req, res) {
 
 // Show album errors and a return link to the create or edit form.
 function showAlbumErrors(req, res, messages, status = 400) {
-    return res.status(status).render('error', {
-        pageTitle: 'No se pudo guardar el álbum', messages: messages,
+    return redirectToError(res, {
+        pageTitle: 'No se pudo guardar el álbum',
+        messages: messages,
         returnUrl: req.params.id ? '/albums/' + encodeURIComponent(req.params.id) + '/edit' : '/new-element',
         returnLabel: 'Volver al formulario'
     });
@@ -312,10 +325,11 @@ function showAlbumErrors(req, res, messages, status = 400) {
 
 // Handle both invalid IDs and albums that no longer exist.
 function showMissingAlbum(res) {
-    return res.status(404).render('error', {
+    return redirectToError(res, {
         pageTitle: 'Álbum no encontrado',
         messages: ['El identificador no es válido o el álbum ya no existe.'],
-        returnUrl: '/', returnLabel: 'Volver al catálogo'
+        returnUrl: '/',
+        returnLabel: 'Volver al catálogo'
     });
 }
 
@@ -333,11 +347,10 @@ function formatDate(date) {
 
 // Catch unmatched URLs after all known routes.
 router.use((req, res) => {
-    res.status(404).render('error', {
+    redirectToError(res, {
         pageTitle: 'Página no encontrada',
         messages: ['La página solicitada no existe.'],
         returnUrl: '/',
         returnLabel: 'Volver al catálogo'
     });
 });
-
