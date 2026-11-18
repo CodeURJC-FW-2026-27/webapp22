@@ -3,6 +3,7 @@ import mustacheExpress from 'mustache-express';
 import bodyParser from 'body-parser';
 
 import router from './router.js';
+import { handleError } from './errors.js';
 import { defaultModel } from './defaultModel.js';
 import { connectDatabase, closeDatabase } from './albums.js';
 import { initializeDemoData } from './seed.js';
@@ -17,10 +18,10 @@ app.set('view engine', 'html');
 app.engine('html', mustacheExpress(), ".html");
 app.set('views', './views');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(defaultModel);
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', router);
+app.use(handleError);
 
 try {
     await connectDatabase();

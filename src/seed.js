@@ -1,18 +1,16 @@
 import { readFile } from 'node:fs/promises';
 import { ObjectId } from 'mongodb';
-import { isCatalogueEmpty, insertDemoAlbums, isDemoInitialized, markDemoInitialized, getAlbumCoverNames } from './albums.js';
+import { isCatalogueEmpty, insertDemoAlbums, getAlbumCoverNames } from './albums.js';
 import { copyDemoImages } from './uploads.js';
 
 export async function initializeDemoData() {
     const contents = await readFile('./data/albums.json', 'utf8');
     const demoAlbums = JSON.parse(contents);
-    const initialized = await isDemoInitialized();
 
-    if (initialized || !await isCatalogueEmpty()) {
+    if (!await isCatalogueEmpty()) {
         const covers = await getAlbumCoverNames();
         const usedDemoAlbums = demoAlbums.filter(album => covers.includes(album.cover_image));
         await copyDemoImages(usedDemoAlbums);
-        if (!initialized) await markDemoInitialized();
         console.log('Existing catalogue preserved.');
         return;
     }
@@ -24,6 +22,5 @@ export async function initializeDemoData() {
         }
     }
     await insertDemoAlbums(demoAlbums);
-    await markDemoInitialized();
     console.log(`Loaded ${demoAlbums.length} demo albums into MongoDB.`);
 }

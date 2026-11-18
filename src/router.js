@@ -1,3 +1,4 @@
+import { albumFormats } from './formats.js';
 import express from 'express';
 import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum, addReview, updateReview, deleteReview } from './albums.js';
 
@@ -60,13 +61,7 @@ router.get('/albums/:id', async (req, res) => {
     if (!album) return showMissingAlbum(res);
 
     prepareAlbumDisplay(album);
-    const formatLabels = {
-        lp: 'LP',
-        vinyl: 'Vinilo',
-        digital: 'Digital',
-        cd: 'CD'
-    };
-    album.displayFormat = formatLabels[album.format];
+    album.displayFormat = albumFormats.find(format => format.value === album.format)?.label || album.format;
     album.displayReleaseDate = formatDate(album.release_date);
 
     for (const review of album.reviews) {
@@ -205,15 +200,11 @@ router.get('/albums/:id/edit', async (req, res) => {
 
 function showAlbumForm(res, album = { format: 'vinyl' }) {
     const isEditing = Boolean(album._id);
-    const albumFormats = [
-        { value: 'lp', label: 'LP' },
-        { value: 'vinyl', label: 'Vinilo' },
-        { value: 'digital', label: 'Digital' },
-        { value: 'cd', label: 'CD' }
-    ];
-    for (const format of albumFormats) format.isSelected = format.value === album.format;
+    const formFormats = albumFormats.map(format => ({
+        ...format, isSelected: format.value === album.format
+    }));
     res.render('new-element', {
-        rules: albumRules, album: album, albumFormats: albumFormats,
+        rules: albumRules, album: album, albumFormats: formFormats,
         isEditing: isEditing,
         pageTitle: isEditing ? 'Editar álbum' : 'Añadir un nuevo álbum',
         formAction: isEditing ? '/albums/' + album._id + '/edit' : '/albums',
@@ -314,15 +305,3 @@ router.use((req, res) => {
     });
 });
 
-router.use((error, req, res, next) => {
-    if (res.headersSent) {
-        return next(error);
-    }
-    console.error(error);
-    res.status(500).render('error', {
-        pageTitle: 'No se pudo completar la operación',
-        messages: ['Se ha producido un error en el servidor. Inténtalo de nuevo.'],
-        returnUrl: '/',
-        returnLabel: 'Volver al catálogo'
-    });
-});

@@ -1,3 +1,5 @@
+import { albumFormats } from './formats.js';
+
 export function catalogueUrl(title, format, page = 1) {
     return '/?title=' + encodeURIComponent(title)
         + '&format=' + encodeURIComponent(format)
@@ -5,13 +7,7 @@ export function catalogueUrl(title, format, page = 1) {
 }
 
 export function defaultModel(req, res, next) {
-    const formats = [
-        { value: '', label: 'Todos' },
-        { value: 'lp', label: 'LP' },
-        { value: 'vinyl', label: 'Vinilo' },
-        { value: 'digital', label: 'Digital' },
-        { value: 'cd', label: 'CD' }
-    ];
+    const formats = [{ value: '', label: 'Todos' }, ...albumFormats.map(format => ({ ...format }))];
     let searchTitle = '';
     let selectedFormat = '';
 

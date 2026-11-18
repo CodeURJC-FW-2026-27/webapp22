@@ -1,3 +1,4 @@
+import { albumFormats } from './formats.js';
 import { albumTitleExists } from './albums.js';
 
 export const albumRules = {
@@ -59,7 +60,7 @@ export async function validateAlbumFields(body = {}, currentId = '') {
     if (!isValidDate(album.release_date)) {
         errors.push('La fecha de lanzamiento debe ser una fecha válida.');
     }
-    if (!['lp', 'vinyl', 'digital', 'cd'].includes(album.format)) {
+    if (!albumFormats.some(format => format.value === album.format)) {
         errors.push('Selecciona un formato válido: LP, Vinilo, Digital o CD.');
     }
 
