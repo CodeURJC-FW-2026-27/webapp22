@@ -20,8 +20,11 @@ export async function initializeDemoData() {
 
     // Require the covers before inserting demo records.
     await copyDemoImages(demoAlbums);
-    for (const album of demoAlbums) {
+    for (const [index, album] of demoAlbums.entries()) {
+        // Assign sequential numeric IDs starting at 1.
+        album._id = index + 1;
         for (const review of album.reviews) {
+            // Embedded reviews need their own IDs for edit and delete routes.
             review._id = new ObjectId();
         }
     }
