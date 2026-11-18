@@ -12,6 +12,14 @@ import { redirectToError, getLastError } from './errors.js';
 const router = express.Router();
 export default router;
 
+let lastConfirmation = null;
+
+// Store confirmation details in memory and redirect cleanly to /confirmacion.
+function redirectToConfirmation(res, confirmationData) {
+    lastConfirmation = confirmationData;
+    return res.redirect('/confirmacion');
+}
+
 // Render the shared error view at /error with clean URL.
 router.get('/error', (req, res) => {
     const errorData = getLastError() || {
@@ -21,6 +29,17 @@ router.get('/error', (req, res) => {
         returnLabel: 'Volver al catálogo'
     };
     res.render('error', errorData);
+});
+
+// Render the shared confirmation view at /confirmacion with clean URL.
+router.get('/confirmacion', (req, res) => {
+    const confirmationData = lastConfirmation || {
+        pageTitle: 'Operación completada',
+        messages: ['La operación se ha realizado correctamente.'],
+        returnUrl: '/',
+        returnLabel: 'Volver al catálogo'
+    };
+    res.render('confirmation', confirmationData);
 });
 
 // List albums with combined filters and six results per page.
@@ -103,7 +122,7 @@ router.post('/albums/:id/reviews/:reviewId/delete', async (req, res) => {
         if (!await getAlbum(req.params.id)) return showMissingAlbum(res);
         return showMissingReview(res, req.params.id);
     }
-    res.render('confirmation', {
+    return redirectToConfirmation(res, {
         pageTitle: 'Reseña eliminada',
         messages: ['La reseña se ha eliminado correctamente.'],
         returnUrl: '/albums/' + req.params.id,
@@ -169,7 +188,7 @@ async function saveReview(req, res) {
         }
         return showReviewErrors(req, res, ['Ya existe una reseña con ese título en este álbum.']);
     }
-    res.status(reviewId ? 200 : 201).render('confirmation', {
+    return redirectToConfirmation(res, {
         pageTitle: reviewId ? 'Reseña actualizada' : 'Reseña creada',
         messages: [reviewId ? 'Los cambios de la reseña se han guardado correctamente.'
             : 'La reseña se ha añadido al álbum correctamente.'],
@@ -211,7 +230,7 @@ router.post('/albums/:id/delete', async (req, res) => {
         console.error(error);
         messages.push('No se pudo eliminar el archivo de la portada.');
     }
-    res.render('confirmation', {
+    return redirectToConfirmation(res, {
         pageTitle: 'Álbum eliminado',
         messages: messages,
         returnUrl: '/',
@@ -305,7 +324,7 @@ async function saveAlbum(req, res) {
             messages.push('La portada nueva está guardada, pero no se pudo eliminar el archivo anterior.');
         }
     }
-    res.status(isEditing ? 200 : 201).render('confirmation', {
+    return redirectToConfirmation(res, {
         pageTitle: isEditing ? 'Álbum actualizado' : 'Álbum creado',
         messages: messages,
         returnUrl: '/albums/' + id,

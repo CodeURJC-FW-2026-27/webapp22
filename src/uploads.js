@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { constants } from 'node:fs';
 import { access, copyFile, mkdir, writeFile, unlink } from 'node:fs/promises';
 import path from 'node:path';
+import { redirectToError } from './errors.js';
 
 // Runtime cover files served by Express, including user uploads.
 export const UPLOADS_FOLDER = './uploads';
@@ -82,8 +83,9 @@ export function handleCoverError(error, req, res, next) {
     const message = error.code === 'LIMIT_FILE_SIZE'
         ? 'La portada no puede superar los 5 MiB.'
         : 'Envía una sola portada y los siete campos del formulario.';
-    res.status(400).render('error', {
-        pageTitle: 'No se pudo guardar el álbum', messages: [message],
+    redirectToError(res, {
+        pageTitle: 'No se pudo guardar el álbum',
+        messages: [message],
         returnUrl: req.params.id ? '/albums/' + encodeURIComponent(req.params.id) + '/edit' : '/new-element',
         returnLabel: 'Volver al formulario'
     });
