@@ -3,7 +3,7 @@ import express from 'express';
 import { countAlbums, getAlbumsPage, getAlbum, createAlbumFilter, addAlbum, updateAlbum, deleteAlbum, addReview, updateReview, deleteReview } from './albums.js';
 
 import { catalogueUrl } from './defaultModel.js';
-import { albumRules, validateAlbumFields, validateReviewFields } from './validation.js';
+import { albumRules, dateRules, validateAlbumFields, validateReviewFields } from './validation.js';
 
 import { receiveCover, coverExtension, saveCover, removeCover, handleCoverError } from './uploads.js';
 
@@ -121,7 +121,7 @@ function makeReviewForm(albumId, review = {}) {
         ratings.push({ value: value, selected: value === review.rating });
     }
     return {
-        review: review, ratings: ratings, isEditing: isEditing,
+        review: review, ratings: ratings, dateRules: dateRules, isEditing: isEditing,
         action: '/albums/' + albumId + '/reviews' + (isEditing ? '/' + review._id + '/edit' : ''),
         heading: isEditing ? 'Modifica tu reseña' : '¡Deja tu reseña!',
         submitLabel: isEditing ? 'Guardar' : 'Crear',
@@ -227,7 +227,7 @@ function showAlbumForm(res, album = { format: 'vinyl' }) {
         ...format, isSelected: format.value === album.format
     }));
     res.render('new-element', {
-        rules: albumRules, album: album, albumFormats: formFormats,
+        rules: albumRules, dateRules: dateRules, album: album, albumFormats: formFormats,
         isEditing: isEditing,
         pageTitle: isEditing ? 'Editar álbum' : 'Añadir un nuevo álbum',
         formAction: isEditing ? '/albums/' + album._id + '/edit' : '/albums',

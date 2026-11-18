@@ -14,7 +14,8 @@
     </div>
     <div class="mb-3">
         <label class="form-label" for="review-date">Fecha</label>
-        <input class="form-control" id="review-date" name="review_date" value="{{review.review_date}}" min="0001-01-01" max="9999-12-31" required type="date">
+        <input class="form-control" id="review-date" name="review_date" value="{{review.review_date}}"
+            min="{{dateRules.min}}" max="{{dateRules.max}}" required type="date">
     </div>
     <div class="mb-3">
         <label class="form-label" for="opinion">Opinión</label>

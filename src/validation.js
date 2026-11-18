@@ -10,14 +10,20 @@ export const albumRules = {
     titlePattern: '[A-ZÁÉÍÓÚÜÑ].*'
 };
 
+export const dateRules = {
+    min: '1900-01-01',
+    max: '2026-12-31'
+};
+
 // Trim plain text and reject unexpected arrays or objects.
 function readText(value) {
     return typeof value === 'string' ? value.trim() : '';
 }
 
-// Check both the date format and the actual calendar day in UTC.
+// Check the date format, supported range and actual calendar day in UTC.
 export function isValidDate(value) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || value.startsWith('0000')) {
+    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)
+        || value < dateRules.min || value > dateRules.max) {
         return false;
     }
     const date = new Date(value + 'T00:00:00Z');
@@ -65,7 +71,7 @@ export async function validateAlbumFields(body = {}, currentId = '') {
         errors.push('La descripción debe tener entre 20 y 2000 caracteres.');
     }
     if (!isValidDate(album.release_date)) {
-        errors.push('La fecha de lanzamiento debe ser una fecha válida.');
+        errors.push('La fecha de lanzamiento debe ser válida y estar entre el 01/01/1900 y el 31/12/2026.');
     }
     if (!albumFormats.some(format => format.value === album.format)) {
         errors.push('Selecciona un formato válido: LP, Vinilo, Digital o CD.');
@@ -96,7 +102,9 @@ export function validateReviewFields(body = {}, reviews = [], currentId = '') {
         errors.push('Ya existe una reseña con ese título en este álbum.');
     }
     if (!review.nickname) errors.push('El nombre es obligatorio.');
-    if (!isValidDate(review.review_date)) errors.push('La fecha de la reseña debe ser válida.');
+    if (!isValidDate(review.review_date)) {
+        errors.push('La fecha de la reseña debe ser válida y estar entre el 01/01/1900 y el 31/12/2026.');
+    }
     if (!review.opinion) errors.push('La opinión es obligatoria.');
     if (!/^[1-5]$/.test(rating)) errors.push('La valoración debe ser un número entero entre 1 y 5.');
 

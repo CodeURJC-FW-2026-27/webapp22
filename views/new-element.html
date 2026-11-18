@@ -67,7 +67,8 @@
                         <div class="col-12">
                             <label class="form-label" for="release-date">Fecha de lanzamiento</label>
                             <input class="form-control" id="release-date" name="release_date"
-                                value="{{album.release_date}}" min="0001-01-01" max="9999-12-31" required type="date">
+                                value="{{album.release_date}}" min="{{dateRules.min}}" max="{{dateRules.max}}"
+                                required type="date">
                         </div>
                     </div>
                     <div class="row mb-3">
