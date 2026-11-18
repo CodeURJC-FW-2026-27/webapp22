@@ -24,13 +24,15 @@
                 <a class="button" href="/new-element">Crear nuevo elemento</a>
             </div>
             <div class="row" id="album-list">
+                <!-- Render one card for each album on the current page. -->
                 {{#albums}}
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <article class="album-card">
                         <div class="cover-frame">
                             <img alt="Portada de {{album_title}}" src="{{coverUrl}}">
                             <div class="cover-overlay">
-                                <a aria-label="Ver detalles: {{album_title}}" class="button" href="/albums/{{_id}}">Ver detalles</a>
+                                <a aria-label="Ver detalles: {{album_title}}" class="button" href="/albums/{{_id}}">Ver
+                                    detalles</a>
                             </div>
                         </div>
                         <div class="album-info">
@@ -43,15 +45,18 @@
                     </article>
                 </div>
                 {{/albums}}
+                <!-- Show this message when the filtered list is empty. -->
                 {{^albums}}
                 <div class="col-12">
                     <p class="text-center">No hay álbumes que coincidan con los criterios seleccionados.</p>
                 </div>
                 {{/albums}}
             </div>
+            <!-- Show page controls only when more than one page exists. -->
             {{#showPagination}}
             <nav aria-label="Páginas del catálogo">
                 <ul class="pagination justify-content-center flex-wrap">
+                    <!-- Enable the previous link only when a previous page exists. -->
                     {{#hasPrevious}}
                     <li class="page-item">
                         <a class="page-link" href="{{previousUrl}}">Anterior</a>
@@ -62,6 +67,7 @@
                         <span class="page-link">Anterior</span>
                     </li>
                     {{/hasPrevious}}
+                    <!-- Mark the current page and link the other pages with the same filters. -->
                     {{#pages}}
                     {{#isCurrent}}
                     <li class="page-item active" aria-current="page">
@@ -74,6 +80,7 @@
                     </li>
                     {{/isCurrent}}
                     {{/pages}}
+                    <!-- Enable the next link only when a next page exists. -->
                     {{#hasNext}}
                     <li class="page-item">
                         <a class="page-link" href="{{nextUrl}}">Siguiente</a>

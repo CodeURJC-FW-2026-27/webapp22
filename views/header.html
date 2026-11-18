@@ -1,55 +1,60 @@
-    <header class="site-header" id="top">
-        <div class="container-fluid">
-            <div class="row align-items-center header-row">
-                <div class="col-12 col-md-6 header-column mb-3">
-                    <div class="brand">
-                        <div aria-hidden="true" class="record-logo">
-                            <div class="record-middle">
-                                <div class="record-label"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="brand-name">{{siteName}}</p>
-                            <p class="brand-tagline">Tu tienda de discos favorita</p>
+<header class="site-header" id="top">
+    <div class="container-fluid">
+        <div class="row align-items-center header-row">
+            <div class="col-12 col-md-6 header-column mb-3">
+                <!-- Display the site name and record -->
+                <div class="brand">
+                    <div aria-hidden="true" class="record-logo">
+                        <div class="record-middle">
+                            <div class="record-label"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 header-column">
-                    <nav aria-label="Main navigation" class="site-nav">
-                        <ul>
-                            <li>
-                                <a class="nav-link" href="/">Inicio</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/#albums">Álbumes</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/new-element">Añadir álbum</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="#opening-hours">Horario</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div>
+                        <p class="brand-name">{{siteName}}</p>
+                        <p class="brand-tagline">Tu tienda de discos favorita</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container header-tools">
-            <form aria-label="Buscar álbumes" class="d-flex flex-wrap align-items-center gap-2" id="search-form"
-                role="search" action="/" method="get">
-                <label class="visually-hidden" for="search-title">Título del álbum</label>
-                <input class="form-control w-auto flex-grow-1" id="search-title" name="title"
-                    placeholder="Buscar por título" type="search" value="{{searchTitle}}">
-                <input type="hidden" name="format" value="{{selectedFormat}}">
-                <button class="button" type="submit">Buscar</button>
-                <a class="nav-link" href="/">Limpiar</a>
-            </form>
-            <div aria-label="Álbum formats" class="format-options" role="group">
-                <span>Formatos</span>
-                {{#formats}}
-                <a class="nav-link{{#isSelected}} text-decoration-underline{{/isSelected}}"
-                    href="{{url}}"{{#isSelected}} aria-current="true"{{/isSelected}}>{{label}}</a>
-                {{/formats}}
+            <div class="col-12 col-md-6 header-column">
+                <!-- Links to the catalogue, album creation and opening hours. -->
+                <nav aria-label="Main navigation" class="site-nav">
+                    <ul>
+                        <li>
+                            <a class="nav-link" href="/">Inicio</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/#albums">Álbumes</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="/new-element">Añadir álbum</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#opening-hours">Horario</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </header>
+    </div>
+    <div class="container header-tools">
+        <!-- Submit the title as a GET query so searches can be bookmarked. -->
+        <form aria-label="Buscar álbumes" class="d-flex flex-wrap align-items-center gap-2" id="search-form"
+            role="search" action="/" method="get">
+            <label class="visually-hidden" for="search-title">Título del álbum</label>
+            <input class="form-control w-auto flex-grow-1" id="search-title" name="title"
+                placeholder="Buscar por título" type="search" value="{{searchTitle}}">
+            <!-- Keep the selected format when submitting a new title search. -->
+            <input type="hidden" name="format" value="{{selectedFormat}}">
+            <button class="button" type="submit">Buscar</button>
+            <a class="nav-link" href="/">Limpiar</a>
+        </form>
+        <div aria-label="Álbum formats" class="format-options" role="group">
+            <span>Formatos</span>
+            <!-- Render filter links prepared by defaultModel, highlighting the active format. -->
+            {{#formats}}
+            <a class="nav-link{{#isSelected}} text-decoration-underline{{/isSelected}}" href="{{url}}" {{#isSelected}}
+                aria-current="true" {{/isSelected}}>{{label}}</a>
+            {{/formats}}
+        </div>
+    </div>
+</header>

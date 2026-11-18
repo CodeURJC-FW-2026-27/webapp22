@@ -1,4 +1,6 @@
+<!-- Shared form model: action, labels and values depend on create or edit mode. -->
 {{#reviewForm}}
+<!-- Send review fields to the server with POST; reviews have no image upload. -->
 <form id="review-form" action="{{action}}" method="post">
     <h2 class="h5">{{heading}}</h2>
     <div class="mb-3">
@@ -23,6 +25,7 @@
         <label class="form-label" for="rating">Valoración</label>
         <select class="form-select" id="rating" name="rating" required>
             <option disabled {{^review.rating}}selected{{/review.rating}} value="">Elige una valoración</option>
+            <!-- Show ratings from 1 to 5 and select the stored value when editing. -->
             {{#ratings}}
             <option value="{{value}}" {{#selected}}selected{{/selected}}>{{value}}★</option>
             {{/ratings}}
@@ -30,6 +33,7 @@
     </div>
     <div class="text-center">
         <button class="button" type="submit">{{submitLabel}}</button>
+        <!-- Offer cancellation when editing an existing review. -->
         {{#isEditing}}<a class="button" href="{{cancelUrl}}">Cancelar</a>{{/isEditing}}
     </div>
 </form>

@@ -7,18 +7,23 @@ import { albumRules, validateAlbumFields, validateReviewFields } from './validat
 
 import { receiveCover, coverExtension, saveCover, removeCover, handleCoverError } from './uploads.js';
 
+// Group catalogue, album and review endpoints in one Express router.
 const router = express.Router();
 export default router;
 
+// List albums with combined filters and six results per page.
 router.get('/', async (req, res) => {
+    // Maximum number of albums shown on each catalogue page.
     const pageSize = 6;
     const title = res.locals.searchTitle;
     const format = res.locals.selectedFormat;
     const filter = createAlbumFilter(title, format);
     const totalAlbums = await countAlbums(filter);
+    // Keep page 1 valid even when there are no matching albums.
     const totalPages = Math.max(1, Math.ceil(totalAlbums / pageSize));
     let currentPage = 1;
 
+    // Accept positive integer pages and clamp them to the last available page.
     if (typeof req.query.page === 'string') {
         const requestedPage = Number(req.query.page);
         if (Number.isSafeInteger(requestedPage) && requestedPage > 0) {
@@ -31,6 +36,7 @@ router.get('/', async (req, res) => {
         prepareAlbumDisplay(album);
     }
 
+    // Prepare page links and the active-page flag for Mustache.
     const pages = [];
     for (let number = 1; number <= totalPages; number++) {
         pages.push({
@@ -51,10 +57,12 @@ router.get('/', async (req, res) => {
     });
 });
 
+// Redirect the old static detail address to the catalogue.
 router.get('/detail', (req, res) => {
     res.redirect('/');
 });
 
+// Load one album and prepare its reviews for the detail page.
 router.get('/albums/:id', async (req, res) => {
     const album = await getAlbum(req.params.id);
 
@@ -76,6 +84,7 @@ router.get('/albums/:id', async (req, res) => {
     });
 });
 
+// Delete a review and distinguish a missing album from a missing review.
 router.post('/albums/:id/reviews/:reviewId/delete', async (req, res) => {
     const deleted = await deleteReview(req.params.id, req.params.reviewId);
     if (!deleted) {
@@ -90,6 +99,7 @@ router.post('/albums/:id/reviews/:reviewId/delete', async (req, res) => {
     });
 });
 
+// Load the selected review into the shared editing form.
 router.get('/albums/:id/reviews/:reviewId/edit', async (req, res) => {
     const album = await getAlbum(req.params.id);
     if (!album) return showMissingAlbum(res);
@@ -102,8 +112,10 @@ router.get('/albums/:id/reviews/:reviewId/edit', async (req, res) => {
     });
 });
 
+// Build the shared review form model for creation or editing.
 function makeReviewForm(albumId, review = {}) {
     const isEditing = Boolean(review._id);
+    // Provide rating choices with the current value marked as selected.
     const ratings = [];
     for (let value = 1; value <= 5; value++) {
         ratings.push({ value: value, selected: value === review.rating });
@@ -117,12 +129,15 @@ function makeReviewForm(albumId, review = {}) {
     };
 }
 
+// Both review operations use the same validation and saving function.
 router.post('/albums/:id/reviews', saveReview);
 router.post('/albums/:id/reviews/:reviewId/edit', saveReview);
 
+// Validate and save a review belonging to the requested album.
 async function saveReview(req, res) {
     const album = await getAlbum(req.params.id);
     if (!album) return showMissingAlbum(res);
+    // An empty ID means creation; an existing ID means editing.
     const reviewId = req.params.reviewId || '';
     if (reviewId && !album.reviews.some(item => String(item._id) === reviewId)) {
         return showMissingReview(res, req.params.id);
@@ -133,6 +148,7 @@ async function saveReview(req, res) {
     const saved = reviewId
         ? await updateReview(req.params.id, reviewId, review)
         : await addReview(req.params.id, review);
+    // Recheck records in case another request changed them during validation.
     if (!saved) {
         const currentAlbum = await getAlbum(req.params.id);
         if (!currentAlbum) return showMissingAlbum(res);
@@ -150,6 +166,7 @@ async function saveReview(req, res) {
     });
 }
 
+// Return validation errors with a link to the relevant review form.
 function showReviewErrors(req, res, messages) {
     return res.status(400).render('error', {
         pageTitle: 'No se pudo guardar la reseña',
@@ -160,6 +177,7 @@ function showReviewErrors(req, res, messages) {
     });
 }
 
+// Show a 404 when the review is not part of this album.
 function showMissingReview(res, albumId) {
     return res.status(404).render('error', {
         pageTitle: 'Reseña no encontrada',
@@ -169,6 +187,7 @@ function showMissingReview(res, albumId) {
     });
 }
 
+// Remove the album and its embedded reviews, then remove its cover.
 router.post('/albums/:id/delete', async (req, res) => {
     const album = await deleteAlbum(req.params.id);
     if (!album) return showMissingAlbum(res);
@@ -188,18 +207,22 @@ router.post('/albums/:id/delete', async (req, res) => {
     });
 });
 
+// Show an empty album form with vinyl selected by default.
 router.get('/new-element', (req, res) => {
     showAlbumForm(res);
 });
 
+// Load an existing album into the shared form.
 router.get('/albums/:id/edit', async (req, res) => {
     const album = await getAlbum(req.params.id);
     if (!album) return showMissingAlbum(res);
     showAlbumForm(res, album);
 });
 
+// Reuse one album form, with existing values when editing.
 function showAlbumForm(res, album = { format: 'vinyl' }) {
     const isEditing = Boolean(album._id);
+    // Mark the selected format without changing the shared format list.
     const formFormats = albumFormats.map(format => ({
         ...format, isSelected: format.value === album.format
     }));
@@ -213,11 +236,14 @@ function showAlbumForm(res, album = { format: 'vinyl' }) {
     });
 }
 
+// Multer reads multipart data before saving; its error handler runs on upload failures.
 router.post('/albums', receiveCover, saveAlbum, handleCoverError);
 router.post('/albums/:id/edit', receiveCover, saveAlbum, handleCoverError);
 
+// Validate fields and cover, save the album, then clean up unused files.
 async function saveAlbum(req, res) {
     const isEditing = Boolean(req.params.id);
+    // Keep the previous cover name for conflict detection and later cleanup.
     const previousAlbum = isEditing ? await getAlbum(req.params.id) : null;
     if (isEditing && !previousAlbum) return showMissingAlbum(res);
     const { album, errors } = await validateAlbumFields(req.body, isEditing ? req.params.id : '');
@@ -229,9 +255,11 @@ async function saveAlbum(req, res) {
     }
     if (errors.length > 0) return showAlbumErrors(req, res, errors);
 
+    // Write the cover only after all validation checks pass.
     const filename = req.file ? await saveCover(req.file, extension) : '';
     if (filename) album.cover_image = filename;
     let id = req.params.id;
+    // Track whether the existing album still matches the expected cover.
     let updated = true;
     try {
         if (isEditing) {
@@ -242,11 +270,13 @@ async function saveAlbum(req, res) {
         }
     } catch (error) {
         if (filename) await removeCover(filename);
+        // Handle a duplicate title even if another request inserted it after validation.
         if (error.code === 11000) {
             return showAlbumErrors(req, res, ['Ya existe un álbum con ese título.']);
         }
         throw error;
     }
+    // Remove the unused new cover when the album was deleted or its cover changed.
     if (!updated) {
         if (filename) await removeCover(filename);
         return showAlbumErrors(req, res, ['El álbum ha cambiado o ya no existe. Vuelve a abrir el formulario.'], 409);
@@ -254,6 +284,7 @@ async function saveAlbum(req, res) {
     const messages = [isEditing
         ? 'Los cambios del álbum se han guardado correctamente.'
         : 'El álbum se ha añadido al catálogo correctamente.'];
+    // Delete the old cover only after the replacement has been saved successfully.
     if (isEditing && filename) {
         try {
             await removeCover(previousAlbum.cover_image);
@@ -270,6 +301,7 @@ async function saveAlbum(req, res) {
     });
 }
 
+// Show album errors and a return link to the create or edit form.
 function showAlbumErrors(req, res, messages, status = 400) {
     return res.status(status).render('error', {
         pageTitle: 'No se pudo guardar el álbum', messages: messages,
@@ -278,6 +310,7 @@ function showAlbumErrors(req, res, messages, status = 400) {
     });
 }
 
+// Handle both invalid IDs and albums that no longer exist.
 function showMissingAlbum(res) {
     return res.status(404).render('error', {
         pageTitle: 'Álbum no encontrado',
@@ -286,16 +319,19 @@ function showMissingAlbum(res) {
     });
 }
 
+// Add view-only price and cover URL fields without writing them to MongoDB.
 function prepareAlbumDisplay(album) {
     album.displayPrice = album.record_price.toFixed(2);
     album.coverUrl = '/uploads/' + encodeURIComponent(album.cover_image);
 }
 
+// Display a stored YYYY-MM-DD date as DD/MM/YYYY.
 function formatDate(date) {
     const parts = date.split('-');
     return parts[2] + '/' + parts[1] + '/' + parts[0];
 }
 
+// Catch unmatched URLs after all known routes.
 router.use((req, res) => {
     res.status(404).render('error', {
         pageTitle: 'Página no encontrada',

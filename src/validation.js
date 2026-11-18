@@ -1,6 +1,7 @@
 import { albumFormats } from './formats.js';
 import { albumTitleExists } from './albums.js';
 
+// Shared limits used by server checks and HTML form attributes.
 export const albumRules = {
     descriptionMin: 20,
     descriptionMax: 2000,
@@ -9,10 +10,12 @@ export const albumRules = {
     titlePattern: '[A-ZÁÉÍÓÚÜÑ].*'
 };
 
+// Trim plain text and reject unexpected arrays or objects.
 function readText(value) {
     return typeof value === 'string' ? value.trim() : '';
 }
 
+// Check both the date format and the actual calendar day in UTC.
 export function isValidDate(value) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || value.startsWith('0000')) {
         return false;
@@ -21,10 +24,12 @@ export function isValidDate(value) {
     return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
 
+// Build clean album fields and collect errors before saving anything.
 export async function validateAlbumFields(body = {}, currentId = '') {
     if (!body || typeof body !== 'object') {
         body = {};
     }
+    // Copy only allowed fields; never store the raw request body.
     const album = {
         album_title: readText(body.album_title),
         artist: readText(body.artist),
@@ -32,7 +37,9 @@ export async function validateAlbumFields(body = {}, currentId = '') {
         release_date: readText(body.release_date),
         format: readText(body.format)
     };
+    // Collect all field errors so the user can fix them together.
     const errors = [];
+    // Keep the original text to reject unsupported numeric formats.
     const priceText = readText(body.record_price);
     const price = Number(priceText);
 
@@ -67,6 +74,7 @@ export async function validateAlbumFields(body = {}, currentId = '') {
     return { album: album, errors: errors };
 }
 
+// Check review fields and title uniqueness within this album.
 export function validateReviewFields(body = {}, reviews = [], currentId = '') {
     if (!body || typeof body !== 'object') body = {};
     const review = {
@@ -75,7 +83,9 @@ export function validateReviewFields(body = {}, reviews = [], currentId = '') {
         review_date: readText(body.review_date),
         opinion: readText(body.opinion)
     };
+    // Collect all field errors so the user can fix them together.
     const errors = [];
+    // Keep the text for the 1-to-5 check and store the rating as a number.
     const rating = readText(body.rating);
     review.rating = Number(rating);
 

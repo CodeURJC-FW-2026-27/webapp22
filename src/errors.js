@@ -1,4 +1,6 @@
+// Log technical details and show a safe message on the shared error page.
 export function handleError(error, req, res, next) {
+    // Let Express finish handling failures if the response has already started.
     if (res.headersSent) return next(error);
     console.error(error);
     const status = error.status === 400 || error.status === 413 ? error.status : 500;

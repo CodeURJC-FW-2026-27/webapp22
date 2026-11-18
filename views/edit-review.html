@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="/styles/style.css" rel="stylesheet">
 </head>
+
 <body>
+    <!-- Reuse the shared navigation, search and format filters. -->
     {{>header}}
     <main class="page-background">
         <div class="container py-5">
             <h1 class="page-title text-center">Editar reseña</h1>
             <p class="page-subtitle text-center">Álbum: {{albumTitle}}</p>
+            <!-- Display the same review form used on the detail page, with existing values. -->
             <div class="form-panel">
                 <div class="form-surface">{{>review-form}}</div>
             </div>
@@ -21,4 +25,5 @@
     </main>
     {{>footer}}
 </body>
+
 </html>

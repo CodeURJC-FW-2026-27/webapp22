@@ -13,6 +13,7 @@
     min-height: 120px;
 }
 
+/* Centre the header columns within the Bootstrap grid. */
 .header-column {
     display: flex;
     justify-content: center;
@@ -26,7 +27,7 @@
 }
 
 /*
- * THE THREE LOGO PIECES ARE DECORATIVE; NO BEHAVIOUR IS ATTACHED TO THEM.
+ * THE THREE DECORATIVE PIECES FORM A RECORD LOGO WITH A HOVER ROTATION.
  */
 .record-logo {
     width: 60px;
@@ -40,10 +41,12 @@
     transition: transform 0.3s ease;
 }
 
+/* Rotate the decorative record when the pointer is over it. */
 .record-logo:hover {
     transform: rotate(360deg);
 }
 
+/* Position the stripe across the centre of the record. */
 .record-middle {
     position: absolute;
     top: 50%;
@@ -57,6 +60,7 @@
     align-items: center;
 }
 
+/* Draw the small coloured label in the record centre. */
 .record-label {
     width: 18px;
     height: 18px;
@@ -65,6 +69,7 @@
     border-radius: 50%;
 }
 
+/* Style the shop name consistently in the header and footer. */
 .brand-name {
     font-size: 2.5rem;
     font-weight: bold;
@@ -75,6 +80,7 @@
     letter-spacing: 2px;
 }
 
+/* Use a smaller contrasting line below the shop name. */
 .brand-tagline {
     font-size: 1rem;
     color: #FFE066;
@@ -109,6 +115,7 @@
     border: 0;
 }
 
+/* Highlight navigation links when hovered. */
 .nav-link:hover {
     background: rgba(255, 255, 255, 0.2);
     color: #FFE066;
@@ -138,6 +145,7 @@
     margin-bottom: 0;
 }
 
+/* Stack cover and album information vertically inside each card. */
 .album-card {
     background: #ffffff;
     border-radius: 20px;
@@ -151,6 +159,7 @@
     margin-bottom: 2rem;
 }
 
+/* Lift the card slightly on hover. */
 .album-card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -166,6 +175,7 @@
     background: #ffffff;
 }
 
+/* Fit the whole cover inside the frame without stretching it. */
 .cover-frame img {
     width: 100%;
     height: 100%;
@@ -178,6 +188,7 @@
     transform: scale(1.1);
 }
 
+/* Place the detail link over the cover; hide it until interaction. */
 .cover-overlay {
     position: absolute;
     top: 0;
@@ -192,6 +203,7 @@
     transition: opacity 0.3s ease;
 }
 
+/* Reveal the detail action on hover or keyboard focus inside the card. */
 .album-card:hover .cover-overlay,
 .album-card:focus-within .cover-overlay {
     opacity: 1;
@@ -218,6 +230,7 @@
     transform: scale(1.05);
 }
 
+/* Let the text area fill the remaining card space. */
 .album-info {
     padding: 1.5rem;
     flex-grow: 1;
@@ -253,6 +266,7 @@
     font-style: italic;
 }
 
+/* Highlight prices in green on catalogue and detail pages. */
 .price {
     font-size: 1.8rem;
     font-weight: bold;
@@ -278,6 +292,7 @@
     margin: 0 auto;
 }
 
+/* Provide the inner background and spacing for album and review forms. */
 .form-surface {
     border-radius: 15px;
     background: linear-gradient(135deg, #e9ecf0 0%, #b5c1d5 100%);
@@ -307,6 +322,7 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Match the footer link to the navigation style. */
 .back-to-top-btn {
     font-weight: 600;
     text-decoration: none;
@@ -336,6 +352,7 @@
     margin-bottom: 2em;
 }
 
+/* Allow album action controls to wrap when horizontal space is limited. */
 .album-actions {
     display: flex;
     justify-content: center;
@@ -349,6 +366,7 @@
     margin-bottom: 4em;
 }
 
+/* Keep the large cover proportional and limit its maximum width. */
 .detail-cover img {
     width: 100%;
     max-width: 40em;
@@ -371,6 +389,7 @@
     font-size: 0.9rem;
 }
 
+/* Group each review table and its action buttons in a bordered panel. */
 .review-item {
     flex-wrap: wrap;
     max-width: 600px;
@@ -383,6 +402,7 @@
     gap: 0.5rem;
 }
 
+/* Allow long review text to wrap within the available width. */
 .review-item table {
     flex: 1 1 260px;
     max-width: 100%;
@@ -403,14 +423,16 @@
     word-break: break-word;
 }
 
+/* Place review action controls side by side. */
 .review-actions {
     display: flex;
     gap: 0.5rem;
 }
 
 /*
- * 7. FORMAT FILTER: STATIC CONTROLS UNTIL PHASE 2.
+ * 7. SEARCH AND FORMAT FILTER LAYOUT.
  */
+/* Wrap search and format controls when the header becomes narrow. */
 .header-tools {
     display: flex;
     align-items: end;
@@ -461,6 +483,7 @@
     }
 }
 
+/* Keep the cover action visible on touch devices without hover. */
 @media (hover: none) {
     .cover-overlay {
         opacity: 1;

@@ -1,11 +1,13 @@
 import { albumFormats } from './formats.js';
 
+// Build a catalogue URL that preserves search filters and the requested page.
 export function catalogueUrl(title, format, page = 1) {
     return '/?title=' + encodeURIComponent(title)
         + '&format=' + encodeURIComponent(format)
         + '&page=' + page;
 }
 
+// Prepare shared header data for every request before rendering a view.
 export function defaultModel(req, res, next) {
     const formats = [{ value: '', label: 'Todos' }, ...albumFormats.map(format => ({ ...format }))];
     let searchTitle = '';

@@ -1,34 +1,38 @@
-<footer class="site-footer">
-    <div class="container-fluid">
-        <div class="row align-items-center py-4 justify-content-between">
-            <div class="col-auto mb-3 mb-md-0">
-                <div class="brand">
-                    <div aria-hidden="true" class="record-logo">
-                        <div class="record-middle">
-                            <div class="record-label"></div>
+    <!-- Shared footer with branding, opening hours and a link back to the header. -->
+    <footer class="site-footer">
+        <div class="container-fluid">
+            <div class="row align-items-center py-4 justify-content-between">
+                <div class="col-auto mb-3 mb-md-0">
+                    <!-- Reuse the CSS record logo and the shared site name. -->
+                    <div class="brand">
+                        <div aria-hidden="true" class="record-logo">
+                            <div class="record-middle">
+                                <div class="record-label"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="brand-name h4 mb-1">{{siteName}}</p>
+                            <p class="brand-tagline small mb-0">Tu tienda de discos favorita</p>
                         </div>
                     </div>
-                    <div>
-                        <p class="brand-name h4 mb-1">{{siteName}}</p>
-                        <p class="brand-tagline small mb-0">Tu tienda de discos favorita</p>
+                </div>
+                <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
+                    <!-- Static shop opening hours. -->
+                    <h3 class="schedule-title h5 mb-3" id="opening-hours">Horario de apertura</h3>
+                    <div class="schedule-days">
+                        <p class="mb-1">Lunes - Viernes: 10:00 - 20:00</p>
+                        <p class="mb-1">Sábado: 09:00 - 22:00</p>
+                        <p class="mb-0">Domingo: 11:00 - 18:00</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-auto mb-3 mb-md-0 mx-auto text-center">
-                <h3 class="schedule-title h5 mb-3" id="opening-hours">Horario de apertura</h3>
-                <div class="schedule-days">
-                    <p class="mb-1">Lunes - Viernes: 10:00 - 20:00</p>
-                    <p class="mb-1">Sábado: 09:00 - 22:00</p>
-                    <p class="mb-0">Domingo: 11:00 - 18:00</p>
+                <div class="col-auto text-center">
+                    <!-- Jump to the top anchor without sending a form. -->
+                    <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
+                        <i aria-hidden="true" class="fas fa-chevron-up me-2">
+                        </i>
+                        Volver arriba
+                    </a>
                 </div>
             </div>
-            <div class="col-auto text-center">
-                <a class="back-to-top-btn btn btn-outline-light rounded-pill px-4 py-2" href="#top">
-                    <i aria-hidden="true" class="fas fa-chevron-up me-2">
-                    </i>
-                    Volver arriba
-                </a>
-            </div>
         </div>
-    </div>
-</footer>
+    </footer>

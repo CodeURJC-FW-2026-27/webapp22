@@ -11,8 +11,10 @@
 </head>
 
 <body>
+    <!-- Reuse the shared navigation, search and format filters. -->
     {{>header}}
     <main id="album-detail">
+        <!-- Use the selected album as the context for its details and reviews. -->
         {{#album}}
         <div class="container-fluid detail-layout">
             <div class="row">
@@ -28,6 +30,7 @@
                         <div class="album-meta">Artista: {{artist}}</div>
                         <div class="album-meta">Formato: {{displayFormat}}</div>
                         <p class="release-date">Fecha de lanzamiento: {{displayReleaseDate}}</p>
+                        <!-- Album deletion uses POST; editing opens the populated form. -->
                         <div class="album-actions">
                             <form action="/albums/{{_id}}/delete" method="post" class="m-0">
                                 <button class="button" type="submit">Borrar</button>
@@ -36,12 +39,14 @@
                             <a class="button" href="/">Volver a la página principal</a>
                         </div>
                     </div>
+                    <!-- Use the review form model supplied by the detail route. -->
                     {{>review-form}}
                 </div>
             </div>
         </div>
         <div class="container-fluid">
             <div class="row">
+                <!-- Render each embedded review with its own edit and delete actions. -->
                 {{#reviews}}
                 <div class="col-lg-6 col-12" lang="es">
                     <article class="review-item">
@@ -76,6 +81,7 @@
                     </article>
                 </div>
                 {{/reviews}}
+                <!-- Show an empty state when this album has no reviews. -->
                 {{^reviews}}
                 <div class="col-12">
                     <p class="text-center">Este álbum todavía no tiene reseñas.</p>
